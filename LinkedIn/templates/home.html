@@ -27,14 +27,66 @@
                 <button class="flex gap-1 items-center"><i class="fa-brands fa-youtube text-[20px] text-[#5f9b41]"></i> Video</button>
                 <button class="flex gap-1 items-center"><i class="fa-solid fa-image text-[18px] text-[#378fe9]"></i> Photo</button>
                 <button class="flex gap-1 items-center"><i class="fa-solid fa-newspaper text-[18px] text-[#e06847]"></i> Write article</button>
+            </div>            
+        </div>
+
+        <div class="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-6">
+        
+            <!-- GitHub Like Bar -->
+            <div class="flex items-center justify-between text-gray-600 text-sm pb-2 border-b">
+                <div class="flex items-center gap-2">
+                    <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" class="w-8 h-8 ">
+                    <h3 class="text-sm"><span class="font-bold">GitHub</span> likes this</h3>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-ellipsis text-[20px]"></i>
+                    <i class="fa-solid fa-xmark text-[20px]"></i>
+                </div>
+            </div>
+            
+            <!-- Header Section -->
+            <div class="flex items-center justify-between  p-4 mt-2">
+                <div class="flex items-center space-x-3">
+                    <img src="{% static 'img/vs_code_logo.jpeg' %}" alt="VS Code" class="w-12 h-12">
+                    <div>
+                        <h1 class="text-xl font-bold">Visual Studio Code</h1>
+                        <p class="text-gray-600 text-sm">36,452 followers • 1w</p>
+                    </div>
+                </div>
+                <button class="text-blue-500 font-semibold">+ Follow</button>
+            </div>
+            
+            <!-- Description -->
+            <p class="mt-2 text-gray-700">Introducing GitHub Copilot agent mode (preview): the next evolution in AI-assisted coding.</p>
+            
+            <!-- Main Content -->
+            <div class="flex flex-col items-center  mt-4">
+                <div class="w-full h-[268px] bg-red-700">
+
+                </div>
+            </div>
+            
+            <!-- Engagement Stats -->
+            <div class="relative flex justify-between items-center mt-4 text-gray-600">
+                <div class="absolute w-full flex items-center justify-between">
+                    <div class="flex items-center">
+                        <span class="text-blue-500"><i class="fa-regular fa-thumbs-up"></i> <i class="fa-solid fa-heart text-red-500"></i> </span>
+                        <span> 2,216</span>
+                    </div>
+                    <span class="flex items-center">41 comments • 139 reposts</span>
+                </div>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="flex justify-around mt-4 border-t pt-4">
+                <button class="px-4 py-2 rounded-md hover:bg-gray-300"><i class="fa-regular fa-thumbs-up"></i> Like</button>
+                <button class="px-4 py-2 rounded-md hover:bg-gray-300"><i class="fa-solid fa-comment-dots"></i> Comment</button>
+                <button class="px-4 py-2 rounded-md hover:bg-gray-300"><i class="fa-solid fa-repeat"></i> Repost</button>
+                <button class="px-4 py-2 rounded-md hover:bg-gray-300"><i class="fa-solid fa-paper-plane"></i> Send</button>
             </div>
         </div>
-        <div class="bg-white p-4 rounded-lg shadow">
-            <h3 class="font-semibold">Jay Mount</h3>
-            <p class="text-sm text-gray-500">Founder | 1w • 🌍</p>
-            <p class="mt-2">Nima uchun intervyular shunchalik qiyin?</p>
-            <img src="interview.jpg" alt="Job Interview" class="w-full mt-2 rounded-lg">
-        </div>
     </div>
+
+    
 </div>
 {% endblock %}
