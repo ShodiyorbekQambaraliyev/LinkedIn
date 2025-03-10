@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+<div class="container_fluid flex gap-6 mt-[20px]">
+    <div class="w-[225px] h-[215px] bg-white rounded-lg relative">
+        <div style="background: rgb(160,180,183);
+            background: linear-gradient(126deg, rgba(160,180,183,1) 53%, rgba(217,229,231,1) 64%);"
+            class="w-[225px] h-[58px] bg-[#A0B4B7] rounded-t-lg">
+
+        </div>
+        <div style="border: 4px dotted #C0CAD2;" class="w-[68px] h-[68px] rounded-full bg-[#E7E2DC] flex items-center justify-center absolute top-[28px] left-[40px]">
+            <i class="text-[40px] text-[#788FA5] fa-solid fa-user "></i>
+        </div>
+
+    </div>
+
+    <div class="w-2/4">
+        <div class="bg-white p-4 rounded-lg shadow mb-4">
+            <div class="w-full flex gap-4"> 
+                <div style="border: 4px dotted #C0CAD2;" class="w-[60px] h-[54px] rounded-full bg-[#E7E2DC] flex items-center justify-center ">
+                    <i class="text-[25px] text-[#788FA5] fa-solid fa-user"></i>
+                </div>
+                <input type="text" placeholder="Start a post" class="w-full px-6 border border-[#b2b2b2] rounded-full">
+            </div>
+            <div class="flex justify-around mt-2 items-center">
+                <button class="flex gap-1 items-center"><i class="fa-brands fa-youtube text-[20px] text-[#5f9b41]"></i> Video</button>
+                <button class="flex gap-1 items-center"><i class="fa-solid fa-image text-[18px] text-[#378fe9]"></i> Photo</button>
+                <button class="flex gap-1 items-center"><i class="fa-solid fa-newspaper text-[18px] text-[#e06847]"></i> Write article</button>
+            </div>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold">Jay Mount</h3>
+            <p class="text-sm text-gray-500">Founder | 1w • 🌍</p>
+            <p class="mt-2">Nima uchun intervyular shunchalik qiyin?</p>
+            <img src="interview.jpg" alt="Job Interview" class="w-full mt-2 rounded-lg">
+        </div>
+    </div>
+</div>
+{% endblock %}
