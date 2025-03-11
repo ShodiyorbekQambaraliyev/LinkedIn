@@ -80,7 +80,7 @@
             </div>            
         </div>
 
-        <div class="w-[555px] mx-auto bg-white shadow-md rounded-lg p-6">
+        <div class="w-[555px] mx-auto bg-white  rounded-lg p-6">
         
             <div class="flex items-center justify-between text-gray-600 text-sm pb-2 border-b">
                 <div class="flex items-center gap-2">
@@ -131,21 +131,139 @@
         </div>
     </div>
 
+    <div class="">
+        <div class="w-[300px] py-3  bg-white rounded-lg ">
+            <h2 class="font-semibold text-[14px] mb-2 ml-4">Today's puzzle games</h2>
     
+            <div class=" px-[26px]">
+                <div class="flex items-center justify-between py-1">
+                    <div class="flex items-center gap-2">
+                        <img src="{% static 'img/kok_oq_sariq.svg' %}" class="w-8 h-8" alt="">
+                        <div>
+                            <p class="text-[13px] font-semibold">Tango</p>
+                            <p class="text-[11px] text-gray-500">Harmonize the grid</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-gray-400"></i>
+                </div>
+        
+                <div class="flex items-center justify-between py-1">
+                    <div class="flex items-center gap-2">
+                        <img src="{% static 'img/mayda_katak.svg' %}" class="w-8 h-8" alt="">
+                        <div>
+                            <p class="text-[13px] font-semibold">Queens</p>
+                            <p class="text-[11px] text-gray-500">Crown each region</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-gray-400"></i>
+                </div>
+        
+                <div class="flex items-center justify-between py-1">
+                    <div class="flex items-center gap-2">
+                        <img src="{% static 'img/kok_uch_qator.svg' %}" class="w-8 h-8" alt="">
+                        <div>
+                            <p class="text-[13px] font-semibold">Pinpoint</p>
+                            <p class="text-[11px] text-gray-500">Guess the category</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-gray-400"></i>
+                </div>
+        
+                <div class="flex items-center justify-between py-1">
+                    <div class="flex items-center gap-2">
+                        <img src="{% static 'img/nomini_bilmiman.svg' %}" class="w-8 h-8" alt="">
+                        <div>
+                            <p class="text-[13px] font-semibold">Crossclimb</p>
+                            <p class="text-[11px] text-gray-500">Unlock a trivia ladder</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-gray-400"></i>
+                </div>
+            </div>
+    
+        </div>
+
+        <div class="w-[300px] mt-2 p-4 bg-white rounded-lg ">
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="font-semibold text-[14px]">Add to your feed</h2>
+                <i class="fa-solid fa-circle-info text-gray-400 text-sm"></i>
+            </div>
+    
+            <div class="flex items-center gap-3 mb-3">
+                <img src="{% static 'img/it_compania.jpeg' %}" class="w-12 h-12 rounded-full" alt="Profile">
+                <div class="flex-1">
+                    <p class="text-[13px] font-semibold">IT Community of Uzbekistan</p>
+                    <p class="text-[11px] text-gray-500">Company • Technology, Information and Internet</p>
+                    <button class="w-[97px] mt-1 py-1 border-2 border-[#000] rounded-full text-sm font-semibold">+ Follow</button>
+                </div>
+            </div>
+    
+            <div class="flex items-center gap-3 mb-3">
+                <img src="{% static 'img/achkili_chol.jpeg' %}" class="w-12 h-12 rounded-full" alt="Profile">
+                <div class="flex-1">
+                    <p class="text-[13px] font-semibold flex items-center">
+                        Bill Gates <i class="fa-brands fa-linkedin text-blue-600 text-xs ml-1"></i>
+                    </p>
+                    <p class="text-[11px] text-gray-500">Chair, Gates Foundation and Founder, Breakthrough Energy</p>
+                    <button class="w-[97px] mt-1 py-1 border-2 border-[#000] rounded-full text-sm font-semibold">+ Follow</button>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3 mb-3">
+                <img src="{% static 'img/hayolparaz.jpeg' %}" class="w-12 h-12 rounded-full" alt="Profile">
+                <div class="flex-1">
+                    <p class="text-[13px] font-semibold">Shavkat Karimov</p>
+                    <p class="text-[11px] text-gray-500">Head of IT Community of Uzbekistan | Keynote Speaker | SEO Executive | ex-...</p>
+                    <button class="w-[97px] mt-1 py-1 border-2 border-[#000] rounded-full text-sm font-semibold">+ Follow</button>
+                </div>
+            </div>
+    
+            <a href="#" class="text-[13px] font-semibold block mt-2">View all recommendations →</a>
+        </div>
+    
+    </div>
+
 </div>
 {% endblock %}
 
-<!-- <div class="mt-6 w-full max-w-4xl grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-    {% for post in posts %}
-        <div class="bg-white p-3 shadow rounded-lg flex flex-col items-center">
-            <img src="{{ post.image.url }}" alt="Post rasmi" class="w-full h-48 object-cover rounded-md">
-            <p class="text-sm text-gray-500 mt-2">{{ post.created_at|date:"Y-m-d H:i" }}</p>
-            <form method="POST" action="{% url 'delete_post' post.id %}" class="mt-2">
-                {% csrf_token %}
-                <button type="submit" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition">O'chirish</button>
-            </form>
+<!-- 
+
+<input type="checkbox" id="modal-toggle" class="hidden peer">
+
+        <label for="modal-toggle" class="bg-blue-600 text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-700 transition">
+            Post yaratish
+        </label>
+        <!-- Modal oyna -->
+        <div class="fixed inset-0 bg-black bg-opacity-50 hidden peer-checked:flex justify-center items-center">
+            <div class="bg-white p-6 rounded-lg shadow-lg w-80 relative">
+                <label for="modal-toggle" class="absolute top-3 right-3 text-red-500 text-xl cursor-pointer">&times;</label>
+                <h2 class="text-lg font-semibold mb-4">Rasm tanlang</h2>
+                
+                <form method="POST" enctype="multipart/form-data" class="flex flex-col items-center">
+                    {% csrf_token %}
+                    
+                    <!-- Fayl yuklash maydoni -->
+                    <label for="rasm_input" class="w-full h-40 border-2 border-dashed border-gray-400 flex flex-col justify-center items-center bg-gray-50 rounded-lg cursor-pointer hover:border-blue-500 transition">
+                        <span class="text-gray-600">Rasm yoki video tanlang</span>
+                        <input type="file" id="rasm_input" name="image" class="hidden" accept="image/*,video/mp4">
+                    </label>
+    
+                    <button type="submit" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">Postni yaratish</button>
+                </form>
+            </div>
         </div>
-    {% empty %}
-        <p class="text-center text-gray-600 col-span-full">Hozircha hech qanday post yo‘q.</p>
-    {% endfor %}
-</div> -->
+    
+        <div class="mt-6 w-full max-w-4xl grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {% for post in posts %}
+                <div class="bg-white p-3 shadow rounded-lg flex flex-col items-center">
+                    <img src="{{ post.image.url }}" alt="Post rasmi" class="w-full h-48 object-cover rounded-md">
+                    <p class="text-sm text-gray-500 mt-2">{{ post.created_at|date:"Y-m-d H:i" }}</p>
+                    <form method="POST" action="{% url 'delete_post' post.id %}" class="mt-2">
+                        {% csrf_token %}
+                        <button type="submit" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition">O'chirish</button>
+                    </form>
+                </div>
+            {% empty %}
+                <p class="text-center text-gray-600 col-span-full">Hozircha hech qanday post yo‘q.</p>
+            {% endfor %}
+        </div> -->
