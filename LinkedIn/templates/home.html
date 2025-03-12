@@ -4,13 +4,13 @@
 {% block content %}
 <div class="container_fluid flex gap-6 mt-[20px]">
     <div class="w-[225px] h-[215px] bg-white rounded-lg">
-        <div class="flex flex-col items-center justify-center relative">
+        <div class="flex flex-col items-center justify-center">
             <div class="w-full h-[57px] bg-gray-100">
                 <img class="w-[225px] h-[58px] rounded-t-lg" src="https://static.licdn.com/aero-v1/sc/h/55k1z8997gh8dwtihm11aajyq" alt="">
             </div>
             <div class="w-[225px] h-[180px] bg-white 
-            rounded-b-lg  p-2 relative text-center">
-                <i style="border: 2px dashed #AEBFCE;" class="bg-[#E7E2DC] flex items-center justify-center text-[35px] text-[#788FA5] w-[68px] h-[68px] rounded-full absolute top-[-20px] left-[20px] fa-solid fa-user" ></i>
+            rounded-b-lg  p-2 relative text-center z-1000">
+                <i style="border: 2px dashed #AEBFCE;" class="bg-[#E7E2DC] flex items-center justify-center text-[35px] text-[#788FA5] w-[68px] h-[68px] rounded-full absolute top-[-20px] left-[20px] fa-solid fa-user " ></i>
                 <div class="w-[24px] h-[24px] bg-[#0A66C2] rounded-full absolute top-[19px] right-[138px]  text-white">
                     <i class="fa-solid fa-plus"></i>
                 </div>
@@ -75,7 +75,29 @@
             </div>
             <div class="flex justify-around mt-2 items-center">
                 <button class="flex gap-1 items-center"><i class="fa-brands fa-youtube text-[20px] text-[#5f9b41]"></i> Video</button>
-                <button class="flex gap-1 items-center"><i class="fa-solid fa-image text-[18px] text-[#378fe9]"></i> Photo</button>
+
+                <input type="checkbox" id="modal-toggle" class="hidden peer">
+                <label for="modal-toggle" class="flex gap-1 items-center hover:cursor-pointer">
+                    <i class="fa-solid fa-image text-[18px] text-[#378fe9]"></i> Photo
+                </label>
+                <div class="fixed inset-0 bg-black bg-opacity-50 hidden peer-checked:flex justify-center items-center">
+                    <div class="bg-white p-6 rounded-lg shadow-lg w-80 relative">
+                        <label for="modal-toggle" class="absolute top-3 right-3 text-red-500 text-xl cursor-pointer">&times;</label>
+                        <h2 class="text-lg font-semibold mb-4">Rasm tanlang</h2>
+                        
+                        <form method="POST" enctype="multipart/form-data" class="flex flex-col items-center">
+                            {% csrf_token %}
+                            
+                            <!-- Fayl yuklash maydoni -->
+                            <label for="rasm_input" class="w-full h-40 border-2 border-dashed border-gray-400 flex flex-col justify-center items-center bg-gray-50 rounded-lg cursor-pointer hover:border-blue-500 transition">
+                                <span class="text-gray-600">Rasm yoki video tanlang</span>
+                                <input type="file" id="rasm_input" name="image" class="hidden" accept="image/*,video/mp4">
+                            </label>
+            
+                            <button type="submit" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">Postni yaratish</button>
+                        </form>
+                    </div>
+                </div>
                 <button class="flex gap-1 items-center"><i class="fa-solid fa-newspaper text-[18px] text-[#e06847]"></i> Write article</button>
             </div>            
         </div>
@@ -91,8 +113,25 @@
 
         <div class="space-y-2 mt-3">
             <div class="w-[555px] mx-auto bg-white  rounded-lg py-6">
+
+                
         
                 <div class="flex items-center justify-between text-gray-600 text-sm pb-2 border-b px-4">
+                    <div class="mt-6 w-full max-w-4xl grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        {% for post in posts %}
+                            <div class="bg-white p-3 shadow rounded-lg flex flex-col items-center">
+                                <img src="{{ post.image.url }}" alt="Post rasmi" class="w-full h-48 object-cover rounded-md">
+                                <p class="text-sm text-gray-500 mt-2">{{ post.created_at|date:"Y-m-d H:i" }}</p>
+                                <form method="POST" action="{% url 'delete_post' post.id %}" class="mt-2">
+                                    {% csrf_token %}
+                                    <button type="submit" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition">O'chirish</button>
+                                </form>
+                            </div>
+                        {% empty %}
+                            <p class="text-center text-gray-600 col-span-full">Hozircha hech qanday post yo‘q.</p>
+                        {% endfor %}
+                    </div>
+
                     <div class="flex items-center gap-2">
                         <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" class="w-8 h-8 ">
                         <h3 class="text-sm"><span class="font-bold">GitHub</span> likes this</h3>
