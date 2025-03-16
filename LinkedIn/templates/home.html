@@ -98,7 +98,6 @@
                         <form method="POST" enctype="multipart/form-data" class="flex flex-col items-center">
                             {% csrf_token %}
                             
-                            <!-- Fayl yuklash maydoni -->
                             <label for="rasm_input" class="w-full h-40 border-2 border-dashed border-gray-400 flex flex-col justify-center items-center bg-gray-50 rounded-lg cursor-pointer hover:border-blue-500 transition">
                                 <span class="text-gray-600">Rasm yoki video tanlang</span>
                                 <input type="file" id="rasm_input" name="image" class="hidden" accept="image/*,video/mp4">
