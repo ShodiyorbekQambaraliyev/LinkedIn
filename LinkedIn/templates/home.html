@@ -123,10 +123,26 @@
         <div class="space-y-2 mt-3">
             <div class="w-[555px] mx-auto bg-white  rounded-lg py-6">
 
-                
+                <div class="flex items-center justify-between text-gray-600 text-sm pb-2 border-b px-4">
+                    <div class="mt-6 w-full max-w-4xl grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4">
+                        {% for post in posts %}
+                        <div class="bg-white p-3 shadow rounded-lg flex flex-col items-center">
+                            <div class="absolute left-[63%] ">
+                                <i class="fa-solid text-[20px] fa-ellipsis-vertical cursor-pointer text-black hover:text-gray-700 transition-all duration-200 ease-in-out "
+                                    onclick="toggleDelete({{ post.id }})"></i>
+                            </div>
+                            <form action="{% url 'delete_post' post.id %}" method="POST" id="delete-{{ post.id }}"
+                                class="absolute  left-[58%] bottom-[53%] bg-red-600 text-white text-sm px-3 py-1 rounded-md shadow-lg hidden transition-all duration-200 ease-in-out">
+                                {% csrf_token %}
+                                <button type="submit" class="hover:bg-red-700 transition">🗑 Delete</button>
+                            </form>
+                            <img src="{{ post.image.url }}" alt="Post rasmi" class="w-full h-54 object-cover rounded-md">
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
         
                 <div class="flex items-center justify-between text-gray-600 text-sm pb-2 border-b px-4">
-
                     <div class="flex items-center gap-2">
                         <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" class="w-8 h-8 ">
                         <h3 class="text-sm"><span class="font-bold">GitHub</span> likes this</h3>
@@ -322,4 +338,12 @@
     </div>
 
 </div>
+
+<script>
+    function toggleDelete(postId) {
+        let deleteButton = document.getElementById("delete-" + postId);
+        deleteButton.classList.toggle("hidden");
+    }
+</script>
+
 {% endblock %}
