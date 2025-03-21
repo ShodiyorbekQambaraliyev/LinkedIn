@@ -90,51 +90,63 @@
                 <button class="flex gap-1 items-center"><i class="fa-brands fa-youtube text-[20px] text-[#5f9b41]"></i>
                     Video</button>
 
-                    <input type="checkbox" id="modal-toggle" class="hidden peer">
-                    <label for="modal-toggle" class="flex gap-1 items-center hover:cursor-pointer">
-                        <i class="fa-solid fa-image text-[18px] text-[#378fe9]"></i> Photo
-                    </label>
-                    
-                    <div class="fixed inset-0 bg-black bg-opacity-50 hidden peer-checked:flex justify-center items-center">
-                        <div class="bg-white p-6 rounded-lg shadow-lg w-80 relative">
-                            <label for="modal-toggle" class="absolute top-3 right-3 text-red-500 text-xl cursor-pointer">&times;</label>
-                            <h2 class="text-lg font-semibold mb-4">Rasm tanlang</h2>
-                    
-                            <form method="POST" enctype="multipart/form-data" class="flex flex-col items-center">
-                                {% csrf_token %}
-                    
-                                <label for="rasm_input" class="w-full h-auto border-2 border-dashed border-gray-400 flex flex-col justify-center items-center bg-gray-50 rounded-lg cursor-pointer hover:border-blue-500 transition relative overflow-hidden">
-                                    <span class="text-gray-600" id="label-text">Rasm tanlang</span>
-                                    <img id="preview" class="hidden rounded-lg">
-                                    <input type="file" id="rasm_input" name="image" class="hidden" accept="image/*,video/mp4">
-                                </label>
-                    
-                                <button type="submit" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">Postni yaratish</button>
-                            </form>
-                        </div>
+                <input type="checkbox" id="modal-toggle" class="hidden peer">
+                <label for="modal-toggle" class="flex gap-1 items-center hover:cursor-pointer">
+                    <i class="fa-solid fa-image text-[18px] text-[#378fe9]"></i> Photo
+                </label>
+
+                <div class="fixed inset-0 bg-black bg-opacity-50 hidden peer-checked:flex justify-center items-center">
+                    <div class="bg-white p-6 rounded-lg shadow-lg w-80 relative">
+                        <label for="modal-toggle"
+                            class="absolute top-3 right-3 text-red-500 text-xl cursor-pointer">&times;</label>
+                        <h2 class="text-lg font-semibold mb-4">Rasm tanlang</h2>
+
+                        <form method="POST" enctype="multipart/form-data" class="flex flex-col items-center">
+                            {% csrf_token %}
+
+                            <label for="rasm_input"
+                                class="w-full h-auto border-2 border-dashed border-gray-400 flex flex-col justify-center items-center bg-gray-50 rounded-lg cursor-pointer hover:border-blue-500 transition relative overflow-hidden">
+                                <span class="text-gray-600 h-40 flex items-center justify-center" id="label-text">Rasm
+                                    tanlang</span>
+                                <img id="preview" class="hidden rounded-lg">
+                                <input type="file" id="rasm_input" name="image" class="hidden" accept="image/*">
+                            </label>
+
+                            <input type="text" id="caption_input"
+                                class="hidden mt-3 w-full px-3 py-2 border border-gray-300 rounded"
+                                placeholder="Post uchun malumot kiriting">
+
+                            <button type="submit"
+                                class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">Postni
+                                yaratish</button>
+                        </form>
                     </div>
-                    
-                    <script>
-                        let input = document.getElementById("rasm_input");
-                        let preview = document.getElementById("preview");
-                        let labelText = document.getElementById("label-text");
-                    
-                        input.onchange = function() {
-                            var file = input.files[0];
-                            if (file && file.type.startsWith("image/")) {
-                                var reader = new FileReader();
-                                reader.onload = function(e) {
-                                    preview.src = e.target.result;
-                                    preview.classList.remove("hidden");
-                                    labelText.style.display = "none";
-                                    preview.style.width = "100%";
-                                    preview.style.height = "100%";
-                                };
-                                reader.readAsDataURL(file);
-                            }
-                        };
-                    </script>
-                    
+                </div>
+
+                <script>
+                    let input = document.getElementById("rasm_input");
+                    let preview = document.getElementById("preview");
+                    let labelText = document.getElementById("label-text");
+                    let captionInput = document.getElementById("caption_input");
+
+                    input.onchange = function () {
+                        let file = input.files[0];
+                        if (file && file.type.startsWith("image/")) {
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
+                                preview.src = e.target.result;
+                                preview.classList.remove("hidden");
+                                labelText.style.display = "none";
+                                preview.style.width = "100%";
+                                preview.style.height = "100%";
+                                captionInput.classList.remove("hidden");
+                            };
+                            reader.readAsDataURL(file);
+                        }
+                    };
+                </script>
+
+
 
                 <button class="flex gap-1 items-center"><i class="fa-solid fa-newspaper text-[18px] text-[#e06847]"></i>
                     Write article</button>
@@ -157,12 +169,20 @@
                     <div class="flex items-center gap-2">
                         <h3 class="text-sm text-[#666]">Suggested</h3>
                     </div>
-                    <div class="flex items-center gap-2">
+                    <div class="flex items-center gap-2 w-[80px]">
                         <div class="absolute left-[63%] ">
                             <i class="fa-solid text-[20px] fa-ellipsis cursor-pointer text-black hover:text-gray-700 transition-all duration-200 ease-in-out "
                                 onclick="toggleDelete({{ post.id }})"></i>
                         </div>
-                        <i class="fa-solid fa-xmark text-[20px]"></i>
+                        <div class="flex flex-col items-center  mt-4">
+                            <div class="relative w-full h-auto">
+                                <form action="{% url 'delete_post' post.id %}" method="POST" id="delete-{{ post.id }}"
+                                    class="absolute bg-red-600 text-white text-sm px-4 py-1 rounded-md shadow-lg hidden transition-all duration-200 ease-in-out hover:bg-red-700 transition">
+                                    {% csrf_token %}
+                                    <button type="submit" class="w-[55px] flex items-center gap-1">🗑 Delete</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -180,16 +200,7 @@
                 <p class="mt-2 text-gray-700 px-4">Introducing GitHub Copilot agent mode (preview): the next evolution
                     in AI-assisted coding.</p>
 
-                <div class="flex flex-col items-center  mt-4">
-                    <div class="w-full h-auto">
-                        <form action="{% url 'delete_post' post.id %}" method="POST" id="delete-{{ post.id }}"
-                            class="absolute  left-[58%] bottom-[53%] bg-red-600 text-white text-sm px-3 py-1 rounded-md shadow-lg hidden transition-all duration-200 ease-in-out">
-                            {% csrf_token %}
-                            <button type="submit" class="hover:bg-red-700 transition">🗑 Delete</button>
-                        </form>
-                        <img src="{{ post.image.url }}" alt="Post rasmi" class="w-full h-54 object-cover rounded-md">
-                    </div>
-                </div>
+                <img src="{{ post.image.url }}" alt="Post rasmi" class="w-full h-54 object-cover rounded-md">
 
                 <div class="relative flex justify-between items-center mt-4 text-gray-600">
                     <div class="absolute w-full flex items-center justify-between px-4">
