@@ -40,6 +40,7 @@ def login(request):
             return redirect('home')
         else:
             messages.error(request, 'Login yoki parol xato')
+            return redirect('login')
     return render(request, 'login.html') 
 
 
