@@ -20,6 +20,9 @@ def home(request):
         form = PostForm()
 
     posts = Post.objects.order_by('-created_at')  # Eng yangi postlar birinchi chiqishi uchun
+    messages.success(request, 'Siz tizimga kirdingiz')
+
+
     return render(request, 'home.html', {'form': form, 'posts': posts, 'profile': profile})
 
 def delete_post(request, post_id):
