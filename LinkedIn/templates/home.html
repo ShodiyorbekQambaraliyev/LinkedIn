@@ -16,10 +16,10 @@
     <div class="w-[225px] h-[215px] bg-white rounded-lg">
         {% for profile in profile %}
         <div class="flex flex-col h-auto items-center justify-center">
-            <div class="w-full h-[60px] bg-gray-100">
+            <a href="{% url 'profile' %}" class="w-full h-[60px] bg-gray-100">
                 <img class="w-[225px] h-auto rounded-t-lg object-cover"
                     src="{{ profile.profilBanner.url }}" alt="">
-            </div>
+            </a>
             <div class="w-[225px] h-auto bg-white 
             rounded-b-lg  px-2 pt-2 relative text-center z-1000 pb-2 ">
                 <img class="flex items-center justify-center w-[68px] h-[68px] rounded-full absolute top-[-28px] left-[20px] border border-2z  border-white" src="{{ profile.img.url }}" alt="">
@@ -27,7 +27,7 @@
                     <i class="fa-solid fa-plus text-[15px]"></i>
                 </div>
                 <div class="mt-8 text-left">
-                    <h2 class="text-[20px] font-semibold !pt-4">{{ profile.fullname }}</h2>
+                    <h2 class="text-[20px] font-semibold !pt-4">{{ profile.fullname }} 10ta tanga</h2>
                     <p class="text-[12px] text-gray-500">{{ profile.location }}</p>
                     <p class="text-[12px] text-blue-500 mt-2">{{ profile.bio }}</p>
 
@@ -355,7 +355,7 @@
         let msg = document.getElementById("flash-message");
         msg.classList.add("opacity-0");
         setTimeout(() => msg.remove(), 500)
-    }, 3000);
+    }, 2000);
     function toggleDelete(postId) {
         let deleteButton = document.getElementById("delete-" + postId);
         deleteButton.classList.toggle("hidden");

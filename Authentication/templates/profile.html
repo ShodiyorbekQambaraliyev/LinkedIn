@@ -5,19 +5,28 @@
 {% for profile in profil %}
 
 <div class="container_fluid w-[1128px] flex justify-between mt-10">
+    
+    {% if messages %}
+    {% for message in messages %}
+    <div id="flash-message" class="fixed left-[50%] translate-x-[-50%] top-[53px]  bg-green-600 text-white rounded-lg p-2 z-50">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+
     <div class="">
         <div class="w-[804px] bg-white rounded-lg overflow-hidden ">
             <div class="relative w-full">
                 <img src="{{ profile.profilBanner.url}}" alt="Cover" class="w-full h-[170px] object-cover">
                 <img style="border: 2px dashed #AEBFCE;"
-                    class="bg-[#E7E2DC] flex items-center justify-center text-[70px] text-[#788FA5] w-[128px] h-[128px] rounded-full absolute bottom-[-35px] left-[20px] object-cover "
-                    src="{{ profile.img.url }}" alt="">
+                class="bg-[#E7E2DC] flex items-center justify-center text-[70px] text-[#788FA5] w-[128px] h-[128px] rounded-full absolute bottom-[-35px] left-[20px] object-cover "
+                src="{{ profile.img.url }}" alt="">
                 <div class="w-full flex items-center justify-between text-left">
                     <i
-                        class="fa-solid fa-pen text-[20px] w-[48px] h-[48px] flex items-center justify-center hover:bg-gray-200 rounded-full duration-300 absolute right-[5px] bottom-[-50px] z-1000"></i>
+                    class="fa-solid fa-pen text-[20px] w-[48px] h-[48px] flex items-center justify-center hover:bg-gray-200 rounded-full duration-300 absolute right-[5px] bottom-[-50px] z-1000"></i>
                 </div>
             </div>
-
+            
             <div class="p-6 mt-4">
                 <div class="flex items-center gap-3">
                     <h2 class="text-xl font-bold">{{ profile.fullname}}</h2>
@@ -29,10 +38,10 @@
                 </div>
                 <p class="text-black">IT Manager at IT House</p>
                 <p class="text-gray-500 text-[12px]">{{ profile.location}} <span
-                        class="text-[#0a66c2] text-[14px] hover:underline hover:cursor-pointer">Contact info</span></p>
-                <div class="mt-4 flex gap-2">
-
-                    <button
+                    class="text-[#0a66c2] text-[14px] hover:underline hover:cursor-pointer">Contact info</span></p>
+                    <div class="mt-4 flex gap-2">
+                        
+                        <button
                         class="bg-blue-600 text-white font-semibold py-1 px-4 rounded-full hover:bg-blue-700 transition">
                         Open to
                     </button>
@@ -51,7 +60,7 @@
                 </div>
             </div>
         </div>
-
+        
         <div class="bg-white p-6 rounded-lg w-[804px] mt-[10px]">
             <h2 class="text-lg font-semibold tracking-[0.5px]">Suggested for you</h2>
             <p class="text-sm text-gray-500"><i class="fa-solid fa-eye"></i> Private to you</p>
@@ -59,13 +68,13 @@
                 <h3 class="text-md font-semibold text-gray-800 flex items-center"><img class="mr-2"
                         src="{% static 'img/royhat.svg' %}" alt=""> Write a summary to highlight your personality or
                     work experience</h3>
-                <p class="text-sm text-gray-600 mt-2">Members who include a summary receive up to 3.9 times as many
-                    profile views.</p>
-                <button class="mt-4 rounded-full border border-black px-4 py-[2px]">Add a summary</button>
-            </div>
-        </div>
-
-        <div class="bg-white rounded-lg w-[804px] mt-[10px] ">
+                    <p class="text-sm text-gray-600 mt-2">Members who include a summary receive up to 3.9 times as many
+                        profile views.</p>
+                        <button class="mt-4 rounded-full border border-black px-4 py-[2px]">Add a summary</button>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg w-[804px] mt-[10px] ">
             <div class=" px-6 pt-6 ">
                 <h2 class="text-lg font-semibold">Analytics</h2>
                 <p class="text-sm text-gray-500"><i class="fas fa-eye"></i> Private to you</p>
@@ -86,14 +95,14 @@
                         </div>
                     </div>
                 </div>
-
+                
             </div>
             <div class="mt-4 border-t text-center hover:bg-gray-100 duration-300">
                 <button class="w-full py-2 font-semibold">Show all analytics →</button>
             </div>
         </div>
-
-
+        
+        
         <div class="bg-white rounded-lg w-[804px] mt-[10px]">
             <div class="pt-6 px-4">
                 <div class="flex px-6 justify-between items-center">
@@ -110,7 +119,7 @@
                     <button class="bg-green-100 text-green-700 px-4 py-1 rounded-full mr-2">Posts</button>
                     <button class="bg-gray-200 text-gray-700 px-4 py-1 rounded-full">Images</button>
                 </div>
-
+                
                 <swiper-container class="mySwiper mt-[20px] w-[777px] flex" slides-per-view="2" centered-slides="true" navigation="true">
                     <swiper-slide>
                         <div class="absolute z-[-100] bg-white rounded-lg overflow-hidden w-[365px] border">
@@ -131,7 +140,7 @@
                             </div>
                         </div>
                     </swiper-slide>
-
+                    
                     <swiper-slide>
                         <div class="absolute z-[-100] bg-white rounded-lg overflow-hidden w-[365px] border">
                             <div class="flex items-center p-4 border-b">
@@ -151,7 +160,7 @@
                             </div>
                         </div>
                     </swiper-slide>
-
+                    
                     
                     <swiper-slide>
                         <!-- <div class="bg-white shadow-lg rounded-lg overflow-hidden w-[365px] border">
@@ -171,9 +180,9 @@
                                 <i class="w-[16px] h-[16px] fa-regular fa-share-from-square cursor-pointer hover:text-red-500 " ></i>
                             </div>
                         </div> -->
-
-
-
+                        
+                        
+                        
                         <div class="space-y-10 mt-[460px]">
                             {% for post in posts %}
                             <div class="w-[555px] mx-auto bg-white  rounded-lg">
@@ -186,15 +195,15 @@
                                         <div class="flex flex-col items-center  mt-4">
                                             <div class="relative w-full h-auto">
                                                 <form action="{% url 'delete_post' post.id %}" method="POST" id="delete-{{ post.id }}"
-                                                    class="absolute bg-red-600 text-white text-sm px-4 py-1 rounded-md shadow-lg hidden transition-all duration-200 ease-in-out hover:bg-red-700 transition">
-                                                    {% csrf_token %}
-                                                    <button type="submit" class="w-[55px] flex items-center gap-1">🗑 Delete</button>
-                                                </form>
-                                            </div>
+                                                class="absolute bg-red-600 text-white text-sm px-4 py-1 rounded-md shadow-lg hidden transition-all duration-200 ease-in-out hover:bg-red-700 transition">
+                                                {% csrf_token %}
+                                                <button type="submit" class="w-[55px] flex items-center gap-1">🗑 Delete</button>
+                                            </form>
+                                        </div>
                                         </div>
                                     </div>
                                 </div>
-                
+                                
                                 {% for profile in profile %}
                                 <div class="flex items-center justify-between  px-[14px] mt-2">
                                     <div class="flex items-center space-x-3">
@@ -207,24 +216,24 @@
                                     <button class="text-blue-500 font-semibold">+ Follow</button>
                                 </div>
                                 {% endfor %}
-                
+                                
                                 <p class="mt-2 text-gray-700 px-4">Introducing GitHub Copilot agent mode (preview): the next evolution
                                     in AI-assisted coding.</p>
-                
-                                <img src="{{ post.image.url }}" alt="Post rasmi" class="w-full h-54 object-cover rounded-md">
-                
-                                <div class="relative flex justify-between items-center mt-4 text-gray-600">
-                                </div>
-                
-                
-                                <div class="flex justify-around mt-4 border-t pt-4">
-                                    <button class="px-4 py-2 rounded-md hover:bg-gray-300"><i class="fa-regular fa-thumbs-up"></i>
-                                        Like</button>
-                                    <button class="px-4 py-2 rounded-md hover:bg-gray-300"><i class="fa-solid fa-comment-dots"></i>
-                                        Comment</button>
-                                    <button class="px-4 py-2 rounded-md hover:bg-gray-300"><i class="fa-solid fa-repeat"></i>
+                                    
+                                    <img src="{{ post.image.url }}" alt="Post rasmi" class="w-full h-54 object-cover rounded-md">
+                                    
+                                    <div class="relative flex justify-between items-center mt-4 text-gray-600">
+                                    </div>
+                                    
+                                    
+                                    <div class="flex justify-around mt-4 border-t pt-4">
+                                        <button class="px-4 py-2 rounded-md hover:bg-gray-300"><i class="fa-regular fa-thumbs-up"></i>
+                                            Like</button>
+                                            <button class="px-4 py-2 rounded-md hover:bg-gray-300"><i class="fa-solid fa-comment-dots"></i>
+                                                Comment</button>
+                                                <button class="px-4 py-2 rounded-md hover:bg-gray-300"><i class="fa-solid fa-repeat"></i>
                                         Repost</button>
-                                    <button class="px-4 py-2 rounded-md hover:bg-gray-300"><i class="fa-solid fa-paper-plane"></i>
+                                        <button class="px-4 py-2 rounded-md hover:bg-gray-300"><i class="fa-solid fa-paper-plane"></i>
                                         Send</button>
                                 </div>
                             </div>
@@ -236,47 +245,47 @@
                 <script>
                     const swiperEl = document.querySelector('swiper-container');
                     const swiper = swiperEl.swiper;
-                </script>
+                    </script>
 
-            </div>
-            <div class="mt-4 border-t text-center hover:bg-gray-100 duration-300">
-                <button class="w-full py-2 font-semibold">Show all analytics →</button>
-            </div>
-        </div>    
+</div>
+<div class="mt-4 border-t text-center hover:bg-gray-100 duration-300">
+    <button class="w-full py-2 font-semibold">Show all analytics →</button>
+</div>
+</div>    
 
-        <div class="w-[804px] bg-white p-6 rounded-xl mt-[10px]">
-            <h2 class="text-xl font-semibold mb-4">Experience</h2>
-
-            <div class="border-b pb-4 mb-4 flex">
-                <img class="mr-2 mt-1 w-[48px] h-[48px]" src="{% static 'img/royhat.svg' %}" alt="">
-                <div>
-                    <h3 class="text-lg font-medium">IT Manager</h3>
-                    <p class="text-gray-600">IT Company • Part-time</p>
-                    <p class="text-gray-500 text-sm">Sep 2009 - Present • 15 yrs 7 mos</p>
-                </div>
-            </div>
-
-            <div class="pb-4 mb-6 flex">
-                <img class="mr-2 mt-1 w-[48px] h-[48px]" src="{% static 'img/royhat.svg' %}" alt="">
-                <div>
-                    <h3 class="text-lg font-medium">Senior Web Developer</h3>
-                    <p class="text-gray-600">KMD • Part-time</p>
-                    <p class="text-gray-500 text-sm">Poytug‘, Andijon Region, Uzbekistan</p>
-                    <p class="text-gray-500 text-sm">Sep 2009 - Present • 15 yrs 7 mos</p>
-                </div>
-            </div>
-
-            <div class="w-full ml-14 mt-4 text-gray-700">
-                <p><span><i class="fa-solid fa-gem"></i></span> Python (Programming Language), Node.js and +3 skills</p>
-            </div>
+<div class="w-[804px] bg-white p-6 rounded-xl mt-[10px]">
+    <h2 class="text-xl font-semibold mb-4">Experience</h2>
+    
+    <div class="border-b pb-4 mb-4 flex">
+        <img class="mr-2 mt-1 w-[48px] h-[48px]" src="{% static 'img/royhat.svg' %}" alt="">
+        <div>
+            <h3 class="text-lg font-medium">IT Manager</h3>
+            <p class="text-gray-600">IT Company • Part-time</p>
+            <p class="text-gray-500 text-sm">Sep 2009 - Present • 15 yrs 7 mos</p>
         </div>
+    </div>
+
+    <div class="pb-4 mb-6 flex">
+        <img class="mr-2 mt-1 w-[48px] h-[48px]" src="{% static 'img/royhat.svg' %}" alt="">
+        <div>
+            <h3 class="text-lg font-medium">Senior Web Developer</h3>
+            <p class="text-gray-600">KMD • Part-time</p>
+            <p class="text-gray-500 text-sm">Poytug‘, Andijon Region, Uzbekistan</p>
+            <p class="text-gray-500 text-sm">Sep 2009 - Present • 15 yrs 7 mos</p>
+        </div>
+    </div>
+    
+    <div class="w-full ml-14 mt-4 text-gray-700">
+        <p><span><i class="fa-solid fa-gem"></i></span> Python (Programming Language), Node.js and +3 skills</p>
+    </div>
+</div>
 
 
-        <div class="w-[804px] bg-white rounded-xl mt-[10px]">
-            <div class="pt-6 px-6">
-                <div class="flex justify-between items-center pb-2">
-                    <h2 class="text-lg font-semibold">Skills</h2>
-                    <div class="flex space-x-2">
+<div class="w-[804px] bg-white rounded-xl mt-[10px]">
+    <div class="pt-6 px-6">
+        <div class="flex justify-between items-center pb-2">
+            <h2 class="text-lg font-semibold">Skills</h2>
+            <div class="flex space-x-2">
                         <button class="text-[30px] text-gray-500 hover:text-gray-700">+</button>
                         <button class="text-[24px] text-gray-500 hover:text-gray-700">✎</button>
                     </div>
@@ -296,12 +305,13 @@
                 <button class="w-full py-2 font-semibold">Show all analytics →</button>
             </div>
         </div>
-
-
+        
+        
     </div>
-
-
-
+    
+    
+    
+    
     <div class="">
         <div class="bg-white rounded-lg p-6 w-[300px]">
             <div class="flex justify-between items-center mb-4">
@@ -331,7 +341,22 @@
 </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js">
+    
+</script>
+
+<script>
+    setTimeout(function () {
+        let msg = document.getElementById("flash-message");
+        msg.classList.add("opacity-0");
+        setTimeout(() => msg.remove(), 500)
+    }, 3000);
+    function toggleDelete(postId) {
+        let deleteButton = document.getElementById("delete-" + postId);
+        deleteButton.classList.toggle("hidden");
+    }
+</script>
+
 {% endfor %}
 
 {% endblock%}

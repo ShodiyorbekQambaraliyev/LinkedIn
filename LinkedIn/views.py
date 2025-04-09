@@ -20,7 +20,7 @@ def home(request):
         form = PostForm()
 
     posts = Post.objects.order_by('-created_at')  # Eng yangi postlar birinchi chiqishi uchun
-    messages.success(request, 'Siz tizimga kirdingiz')
+    messages.success(request, 'Siz home sahifaga kirdingiz')
 
 
     return render(request, 'home.html', {'form': form, 'posts': posts, 'profile': profile})
@@ -44,10 +44,18 @@ def login(request):
         else:
             messages.error(request, 'Login yoki parol xato')
             return redirect('login')
+        
+    messages.success(request, 'Siz loginga kirdingiz')
+
     return render(request, 'login.html') 
+
+
 
 
 
 def logout(request):
     auth_logout(request)
+
+    messages.success(request, 'Siz logout bolimiga kirdingiz')
+
     return render(request, 'logout.html')
