@@ -1,6 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Profil
-# Create your views here.
+from LinkedIn.models import Post
+
+
 def profil(request):
     profil = Profil.objects.all()
-    return render(request, 'profile.html', {'profil': profil})
+    post = Post.objects.all()
+    return render(request, 'profile.html', {'profil': profil, 'post': post})
+
+
+
+
