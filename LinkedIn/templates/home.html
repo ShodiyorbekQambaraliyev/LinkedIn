@@ -92,12 +92,10 @@
 
     <div class="">
         <div class="w-[555px] bg-white p-4 rounded-lg mb-[8px]">
-            {% for profile in profile %}
             <div class="w-full flex gap-4">
-                <div style="border: 4px dotted #C0CAD2;"
-                    class="w-[60px] h-[54px] rounded-full bg-[#E7E2DC] flex items-center justify-center ">
-                    <i class="text-[25px] text-[#788FA5] fa-solid fa-user"></i>
-                </div>
+                {% for profile in profile %}
+                <img class="flex items-center justify-center w-[48px] h-[48px] rounded-full border border-2z  border-white"
+                    src="{{ profile.img.url }}" alt="">
                 {% endfor %}
                 <input type="text" placeholder="Start a post" class="w-full px-6 border border-[#b2b2b2] rounded-full">
             </div>
