@@ -60,8 +60,11 @@ def logout(request):
 
     return render(request, 'logout.html')
 
+def SnakeGame(request):
+    return render(request, 'snake-game.html')
+
 def CarGame(request):
     return render(request, 'car-game.html')
 
-def SnakeGame(request):
-    return render(request, 'snake-game.html')
+def LadderSnake(request):
+    return render(request, 'ladder-snake.html')
