@@ -59,3 +59,9 @@ def logout(request):
     messages.success(request, 'Siz logout bolimiga kirdingiz')
 
     return render(request, 'logout.html')
+
+def CarGame(request):
+    return render(request, 'car-game.html')
+
+def SnakeGame(request):
+    return render(request, 'snake-game.html')

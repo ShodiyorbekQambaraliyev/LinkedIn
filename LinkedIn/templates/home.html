@@ -31,7 +31,6 @@
                     <h2 class="text-[20px] font-semibold !pt-4">{{ profile.fullname }} 10ta tanga</h2>
                     <p class="text-[12px] text-gray-500">{{ profile.location }}</p>
                     <p class="text-[12px] text-blue-500 mt-2">{{ profile.bio }}</p>
-
                 </div>
             </div>
         </div>
@@ -247,28 +246,27 @@
 
     <div class="">
         <div class="w-[300px] py-3  bg-white rounded-lg ">
-            <h2 class="font-semibold text-[14px] mb-2 ml-4">Today's puzzle games</h2>
-
+            <h2 class="font-semibold text-[14px] mb-2 ml-4">Off-topic games</h2>
             <div class=" px-[26px]">
                 <div class="flex items-center justify-between py-1">
-                    <div class="flex items-center gap-2">
-                        <img src="{% static 'img/kok_oq_sariq.svg' %}" class="w-8 h-8" alt="">
+                    <a href="{% url 'snake-game' %}" class="flex items-center gap-2">
+                        <img src="{% static 'img/snake-game.png' %}" class="w-8 h-8 rounded-[5px]" alt="">
                         <div>
-                            <p class="text-[13px] font-semibold">Tango</p>
-                            <p class="text-[11px] text-gray-500">Harmonize the grid</p>
+                            <p class="text-[13px] font-semibold">Snake game</p>
+                            <p class="text-[11px] text-gray-500">Feed the snake</p>
                         </div>
-                    </div>
+                    </a>
                     <i class="fa-solid fa-chevron-right text-gray-400"></i>
                 </div>
 
                 <div class="flex items-center justify-between py-1">
-                    <div class="flex items-center gap-2">
-                        <img src="{% static 'img/mayda_katak.svg' %}" class="w-8 h-8" alt="">
+                    <a href="{% url 'car-game' %}" class="flex items-center gap-2">
+                        <img src="{% static 'img/Car-game-logo.png' %}" class="w-8 h-8 border border-2 border-black rounded-[5px]" alt="">
                         <div>
-                            <p class="text-[13px] font-semibold">Queens</p>
-                            <p class="text-[11px] text-gray-500">Crown each region</p>
+                            <p class="text-[13px] font-semibold">Snake game</p>
+                            <p class="text-[11px] text-gray-500">Feed the snake</p>
                         </div>
-                    </div>
+                    </a>
                     <i class="fa-solid fa-chevron-right text-gray-400"></i>
                 </div>
 
