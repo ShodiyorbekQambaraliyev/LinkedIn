@@ -8,5 +8,5 @@ urlpatterns = [
     path('logout/', logout, name='logout'),
     path('snake-game/', SnakeGame, name='snake-game'),
     path('car-game/', CarGame, name='car-game'),
-    path('landder-snake/', LadderSnake, name='landder-snake'),
+    path('ladder-snake/', LadderSnake, name='ladder-snake'),
 ]

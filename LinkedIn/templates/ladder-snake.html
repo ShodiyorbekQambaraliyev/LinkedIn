@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>🐍 Ilon va Narvon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes movePlayer {
+            0% {
+                transform: scale(1) translate(0, 0);
+            }
+
+            100% {
+                transform: scale(1) translate(var(--move-x), var(--move-y));
+            }
+        }
+
+        .cell {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            border: 1px solid #888;
+            position: relative;
+        }
+
+        .board {
+            display: grid;
+            grid-template-columns: repeat(10, 50px);
+            grid-template-rows: repeat(10, 50px);
+            border: 3px solid #444;
+            background: linear-gradient(135deg, #fcd34d 20%, #fde68a 100%);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            width: 500px;
+            height: 500px;
+        }
+
+        .player1,
+        .player2 {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 5px;
+            animation-duration: 0.7s; /* Animatsiya davomiyligini oshirdim */
+            animation-timing-function: ease-in-out;
+        }
+
+        .player1 {
+            background-color: #3b82f6;
+            left: 5px;
+        }
+
+        .player2 {
+            background-color: #dc2626;
+            right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-gradient-to-b from-indigo-800 to-indigo-500 min-h-screen flex flex-col items-center justify-center text-white p-4">
+        <h1 class="text-4xl font-bold mb-6 drop-shadow-lg">🐍 Ilon va Narvon</h1>
+
+        <div class="flex items-center justify-center gap-10 mb-4">
+            <div class="flex items-center gap-2">
+                <div class="w-4 h-4 bg-blue-500 rounded-full"></div>
+                <span>O‘yinchi 1</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <div class="w-4 h-4 bg-red-600 rounded-full"></div>
+                <span>O‘yinchi 2</span>
+            </div>
+        </div>
+
+        <div class="relative" id="board-container">
+            <canvas id="lines-canvas" width="500" height="500" class="absolute top-0 left-0 z-10 pointer-events-none"></canvas>
+            <div id="board" class="board z-0"></div>
+        </div>
+
+        <div class="flex items-center gap-4 mt-6">
+            <button onclick="rollDice()" class="bg-yellow-300 hover:bg-yellow-400 text-black font-semibold px-5 py-2 rounded-lg shadow-lg transition">🎲 Qaytaring</button>
+            <p id="info" class="text-xl font-semibold"></p>
+        </div>
+
+        <script>
+            const board = document.getElementById('board');
+            const canvas = document.getElementById('lines-canvas');
+            const info = document.getElementById('info');
+            const ctx = canvas.getContext('2d');
+
+            const snakes = {
+                16: 6, 47: 26, 49: 11, 56: 53, 62: 19,
+                64: 60, 87: 24, 93: 73, 95: 75, 98: 78
+            };
+
+            const ladders = {
+                1: 38, 4: 14, 9: 31, 21: 42,
+                28: 84, 36: 44, 51: 67, 71: 91, 80: 100
+            };
+
+            let positions = [1, 1];
+            let turn = 0;
+
+            function getCoords(pos) {
+                const row = Math.floor((pos - 1) / 10);
+                const col = (row % 2 === 0) ? (pos - 1) % 10 : 9 - (pos - 1) % 10;
+                return {
+                    x: col * 50 + 25,
+                    y: (9 - row) * 50 + 25
+                };
+            }
+
+            function drawLines() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.lineWidth = 3;
+
+                ctx.strokeStyle = 'green';
+                for (const [from, to] of Object.entries(ladders)) {
+                    const start = getCoords(+from);
+                    const end = getCoords(+to);
+                    ctx.beginPath();
+                    ctx.moveTo(start.x, start.y);
+                    ctx.lineTo(end.x, end.y);
+                    ctx.stroke();
+                }
+
+                ctx.strokeStyle = 'red';
+                for (const [from, to] of Object.entries(snakes)) {
+                    const start = getCoords(+from);
+                    const end = getCoords(+to);
+                    ctx.beginPath();
+                    ctx.moveTo(start.x, start.y);
+                    ctx.lineTo(end.x, end.y);
+                    ctx.stroke();
+                }
+            }
+
+            function createBoard() {
+                for (let row = 9; row >= 0; row--) {
+                    for (let col = 0; col < 10; col++) {
+                        const num = row % 2 === 0
+                            ? row * 10 + col + 1
+                            : row * 10 + (9 - col) + 1;
+                        const cell = document.createElement('div');
+                        cell.className = 'cell';
+                        cell.id = 'cell-' + num;
+                        cell.innerText = num;
+                        board.appendChild(cell);
+                    }
+                }
+            }
+
+            function updatePlayers() {
+                document.querySelectorAll('.player1, .player2').forEach(p => p.remove());
+                positions.forEach((pos, index) => {
+                    const player = document.createElement('div');
+                    player.className = index === 0 ? 'player1' : 'player2';
+                    document.getElementById('cell-' + pos).appendChild(player);
+                });
+            }
+
+            function movePlayerToPosition(playerIndex, targetPosition) {
+                const playerElement = document.querySelectorAll('.player1, .player2')[playerIndex];
+                const targetCell = document.getElementById('cell-' + targetPosition);
+                const targetCoords = targetCell.getBoundingClientRect();
+                const currentCoords = playerElement.getBoundingClientRect();
+
+                // X va Y o'zgarishlarini hisoblash
+                const deltaX = targetCoords.left - currentCoords.left;
+                const deltaY = targetCoords.top - currentCoords.top;
+
+                playerElement.style.setProperty('--move-x', deltaX + 'px');
+                playerElement.style.setProperty('--move-y', deltaY + 'px');
+                playerElement.style.animationName = 'movePlayer';
+                playerElement.style.animationPlayState = 'running';
+            }
+
+            function rollDice() {
+                const dice = Math.floor(Math.random() * 6) + 1;
+                let current = positions[turn];
+                if (current + dice <= 100) current += dice;
+                if (snakes[current]) current = snakes[current];
+                else if (ladders[current]) current = ladders[current];
+                positions[turn] = current;
+
+                updatePlayers();
+                movePlayerToPosition(turn, current);  // Harakatni animatsiyalash
+
+                info.innerText = `🎯 O‘yinchi ${turn + 1} - ${dice} chiqdi`;
+
+                if (current === 100) {
+                    setTimeout(() => {
+                        alert(`🎉 O‘yinchi ${turn + 1} g‘olib bo‘ldi!`);
+                        positions = [1, 1];
+                        updatePlayers();
+                    }, 200);
+                    return;
+                }
+
+                turn = 1 - turn;
+            }
+
+            createBoard();
+            drawLines();
+            updatePlayers();
+
+        </script>
+    </div>
+</body>
+
+</html>
