@@ -4,6 +4,7 @@ from django.db import models
 class Profil(models.Model):
     img = models.ImageField(upload_to='static/img/')
     location = models.CharField(max_length=50)
+    ish = models.CharField(max_length=100, null=True)
     bio = models.TextField()
     profilBanner = models.ImageField(upload_to='static/img/')
     fullname = models.CharField(max_length=50)

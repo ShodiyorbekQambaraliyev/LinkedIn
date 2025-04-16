@@ -4,7 +4,7 @@ from .forms import PostForm
 from Authentication.models import Profil
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib import messages
-from LinkedIn.forms import ProfileEditFrom
+from .forms import ProfileEditForm
 
 def nav(request):
     return render(request, 'nav.html')
@@ -50,10 +50,6 @@ def login(request):
 
     return render(request, 'login.html') 
 
-
-
-
-
 def logout(request):
     auth_logout(request)
 
@@ -64,12 +60,12 @@ def logout(request):
 def edit_profile(request, pk):
     profile = get_object_or_404(Profil, pk=pk)
     if request.method == "POST":
-        form = ProfileEditFrom(request.POST, request.FILES,  instance=profile)
+        form = ProfileEditForm(request.POST, request.FILES,  instance=profile)
         if form.is_valid():
             form.save()
             return redirect('profile')
     else:
-        form = ProfileEditFrom(instance=profile)
+        form = ProfileEditForm(instance=profile)
     return render(request, 'edit_profile.html', {'form': form})
 
 def SnakeGame(request):

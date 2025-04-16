@@ -6,6 +6,7 @@ urlpatterns = [
     path('delete/<int:post_id>/', delete_post, name='delete_post'),
     path('login/', login, name='login'),
     path('logout/', logout, name='logout'),
+    path('profile/edit/<int:pk>/', edit_profile, name='edit_profile'),
     path('snake-game/', SnakeGame, name='snake-game'),
     path('car-game/', CarGame, name='car-game'),
     path('ladder-snake/', LadderSnake, name='ladder-snake'),
