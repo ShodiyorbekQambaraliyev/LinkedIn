@@ -44,3 +44,9 @@ class ProfileEditForm(forms.ModelForm):
             'class': 'mt-2 p-2 block outline-none w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50',
             'placeholder': 'Ish joyingiz yoki kasbingiz'
         })
+
+
+class ProfileImageForm(forms.ModelForm):
+    class Meta:
+        model = Profil
+        fields = ['img']

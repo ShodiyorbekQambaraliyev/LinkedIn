@@ -5,6 +5,7 @@ from Authentication.models import Profil
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib import messages
 from .forms import ProfileEditForm
+from .forms import ProfileImageForm
 
 def nav(request):
     return render(request, 'nav.html')
@@ -67,6 +68,17 @@ def edit_profile(request, pk):
     else:
         form = ProfileEditForm(instance=profile)
     return render(request, 'edit_profile.html', {'form': form})
+
+
+def update_profile_image(request):
+    if request.method == 'POST':
+        form = ProfileImageForm(request.POST, request.FILES, instance=request.user.profil)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = ProfileImageForm(instance=request.user.profile)
+    return render(request, 'your_template.html', {'form': form})
 
 def SnakeGame(request):
     return render(request, 'snake-game.html')

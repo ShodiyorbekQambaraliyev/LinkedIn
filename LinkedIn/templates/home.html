@@ -20,24 +20,57 @@
             <a href="{% url 'profile' %}" class="w-full h-[60px] bg-gray-100">
                 <img class="w-[225px] h-auto rounded-t-lg object-cover" src="{{ profile.profilBanner.url }}" alt="">
             </a>
-            <div class="w-[225px] h-auto bg-white 
-            rounded-b-lg  px-2 pt-2 relative text-center z-1000 pb-2 ">
+
+            <div class="w-[225px] h-auto bg-white rounded-b-lg px-2 pt-2 relative text-center pb-2">
                 <img style="border: 2px dashed #AEBFCE;"
-                class="bg-[#E7E2DC] flex items-center justify-center text-[70px] text-[#788FA5] w-[68px] h-[68px] rounded-full top-[-28px] left-[20px] rounded-full absolute  object-cover "
-                src="{{ profile.img.url }}" alt="">
-                <div class="w-[24px] h-[24px] bg-[#0A66C2] rounded-full absolute top-[20px] right-[132px]  text-white">
+                    class="bg-[#E7E2DC] w-[68px] h-[68px] rounded-full top-[-28px] left-[20px] absolute object-cover"
+                    src="{{ profile.img.url }}" alt="">
+
+                <button onclick="toggleModal()"
+                    class="w-[24px] h-[24px] bg-[#0A66C2] rounded-full absolute top-[20px] right-[132px] text-white flex items-center justify-center">
                     <i class="fa-solid fa-plus text-[15px]"></i>
+                </button>
+
+                <div id="modalInput"
+                    class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+                    <div class="bg-white p-6 rounded-xl shadow-lg w-80">
+                        <h2 class="text-lg font-semibold mb-4">Yangi rasm kiriting</h2>
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <div class="mt-2 text-right flex justify-between items-center">
+                                <button type="button" onclick="toggleModal()"
+                                    class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 transition">Bekor
+                                    qilish</button>
+                                <button type="submit"
+                                    class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">Saqlash</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
+
+                <script>
+                    function toggleModal() {
+                        const modal = document.getElementById("modalInput");
+                        modal.classList.toggle("hidden");
+                    }
+                </script>
+
+
                 <div class="mt-8 text-left">
-                    <h2 class="text-[20px] font-semibold !pt-4">{{ profile.fullname }} 10ta tanga</h2>
+                    <h2 class="text-[20px] font-semibold pt-4">{{ profile.fullname }} 10ta tanga</h2>
                     <p class="text-[12px] text-gray-500">{{ profile.location }}</p>
-                    <p class="text-[12px] text-blue-500 mt-2">{{ profile.bio }}</p>
+                    <p class="text-[12px] text-blue-500 mt-4">{{ profile.bio }}</p>
                 </div>
             </div>
         </div>
         {% endfor %}
 
-        <div class="w-[225px]  rounded-lg bg-white mt-2 p-4 flex  justify-between">
+
+
+
+
+        <div class="w-[225px]  rounded-lg bg-white mt-6 p-4 flex  justify-between">
             <div class="text-[12px]">
                 <span class="text-[#000] font-bold">Connections</span> <br>
                 <span class="text-gray-300 font-bold">Grow your network</span>
@@ -262,7 +295,8 @@
 
                 <div class="flex items-center justify-between py-1">
                     <a href="{% url 'car-game' %}" class="flex items-center gap-2">
-                        <img src="{% static 'img/Car-game-logo.png' %}" class="w-8 h-8 border border-2 border-black rounded-[5px]" alt="">
+                        <img src="{% static 'img/Car-game-logo.png' %}"
+                            class="w-8 h-8 border border-2 border-black rounded-[5px]" alt="">
                         <div>
                             <p class="text-[13px] font-semibold">CarGame</p>
                             <p class="text-[11px] text-gray-500">Protect the machine from obstacles</p>
@@ -273,23 +307,13 @@
 
                 <div class="flex items-center justify-between py-1">
                     <a href="{% url 'ladder-snake' %}" class="flex items-center gap-2">
-                        <img src="{% static 'img/Car-game-logo.png' %}" class="w-8 h-8 border border-2 border-black rounded-[5px]" alt="">
+                        <img src="{% static 'img/Car-game-logo.png' %}"
+                            class="w-8 h-8 border border-2 border-black rounded-[5px]" alt="">
                         <div>
                             <p class="text-[13px] font-semibold">Ilon va Narvon Oyini</p>
                             <p class="text-[11px] text-gray-500">Protect the machine from obstacles</p>
                         </div>
                     </a>
-                    <i class="fa-solid fa-chevron-right text-gray-400"></i>
-                </div>
-
-                <div class="flex items-center justify-between py-1">
-                    <div class="flex items-center gap-2">
-                        <img src="{% static 'img/nomini_bilmiman.svg' %}" class="w-8 h-8" alt="">
-                        <div>
-                            <p class="text-[13px] font-semibold">Crossclimb</p>
-                            <p class="text-[11px] text-gray-500">Unlock a trivia ladder</p>
-                        </div>
-                    </div>
                     <i class="fa-solid fa-chevron-right text-gray-400"></i>
                 </div>
             </div>

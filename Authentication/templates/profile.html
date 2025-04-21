@@ -121,8 +121,8 @@
                     <button class="bg-green-100 text-green-700 px-4 py-1 rounded-full mr-2">Posts</button>
                     <button class="bg-gray-200 text-gray-700 px-4 py-1 rounded-full">Images</button>
                 </div>
-                
-                <swiper-container class="mySwiper mt-[20px] w-[777px] flex" slides-per-view="2" centered-slides="true" navigation="true">
+
+                <swiper-container class="mySwiper mt-[20px] w-[777px] flex items-center justify-center" slides-per-view="2"  navigation="true" pagination="true" aria-atomic="true">
                     <swiper-slide>
                         <div class="absolute z-[-100] bg-white rounded-lg overflow-hidden w-[365px] border">
                             <div class="flex items-center p-4 border-b">
@@ -164,27 +164,7 @@
                     </swiper-slide>
                     
                     
-                    <swiper-slide>
-                        <!-- <div class="bg-white shadow-lg rounded-lg overflow-hidden w-[365px] border">
-                            <div class="flex items-center p-4 border-b">
-                                <img src="{% static 'img/achkili_chol.jpeg' %}" class="w-10 h-10 rounded-full mr-3" alt="Profile">
-                                <div>
-                                    <p class="font-semibold">Shodiyorbek Qambaraliyev</p>
-                                    <p class="text-gray-500 text-sm">IT Manager at IT House</p>
-                                    <p class="text-gray-400 text-xs">now • <i class="fa-solid fa-earth-asia"></i></p>
-                                </div>
-                            </div>
-                            <div class="w-full h-[300px] bg-cover bg-center" style="background-image: url('{% static "img/pexels-pixabay-158063.jpg" %}');"></div>
-                            <div class="flex justify-between text-gray-500 p-4">
-                                <i class="fa-regular fa-thumbs-up cursor-pointer hover:text-red-500"></i>                                
-                                <i class="fa-regular fa-comment cursor-pointer hover:text-green-500"></i>
-                                <i class="fa-solid fa-retweet cursor-pointer hover:text-red-500"></i>
-                                <i class="w-[16px] h-[16px] fa-regular fa-share-from-square cursor-pointer hover:text-red-500 " ></i>
-                            </div>
-                        </div> -->
-                        
-                        
-                        
+                    <swiper-slide>       
                         <div class="space-y-10 mt-[460px]">
                             {% for post in posts %}
                             <div class="w-[555px] mx-auto bg-white  rounded-lg">

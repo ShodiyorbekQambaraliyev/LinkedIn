@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+{% block content %}
 <!DOCTYPE html>
 {% load static %}
 <html lang="uz">
@@ -9,39 +11,63 @@
 
 <body>
 
-  <div class="bg-gradient-to-b from-[#1e1e2f] to-[#3e3e5e] h-screen flex items-center justify-center font-sans">
+  <div class="bg-gradient-to-b from-[#1e1e2f] to-[#3e3e5e] flex flex-col items-center justify-center space-y-4 font-sans h-screen fixed w-full">
+
+    <!-- O'yin ekran (harakatsiz) -->
     <div id="game" class="relative w-[320px] h-[560px] bg-[#222] overflow-hidden rounded-2xl shadow-xl">
-      <div id="road" class="absolute w-full h-full animate-[roadMove_1s_linear_infinite]"
-        style="background: repeating-linear-gradient(#2c2c2c, #2c2c2c 40px, #1a1a1a 40px, #1a1a1a 80px);"></div>
-
-      <div id="score" class="absolute top-2 left-2 text-white font-bold text-sm z-10">Ball: 0</div>
-      <div id="car"
-        class="absolute bottom-5 left-[135px] w-[50px] h-[100px] bg-center bg-cover bg-no-repeat rounded-md shadow-md"
-        style="background-image: url({% static 'img/bmw.png' %}); transition: left 0.1s ease-in-out;">
+      <!-- Harakatlanuvchi yo‘l -->
+      <div id="road"
+           class="absolute w-full h-full animate-[roadMove_1s_linear_infinite]"
+           style="background: repeating-linear-gradient(#2c2c2c, #2c2c2c 40px, #1a1a1a 40px, #1a1a1a 80px);">
       </div>
-
-
+  
+      <!-- Ball -->
+      <div id="score" class="absolute top-2 left-2 text-white font-bold text-sm z-10">Ball: 0</div>
+  
+      <!-- Mashina -->
+      <div id="car"
+           class="absolute bottom-5 left-[135px] w-[50px] h-[100px] bg-center bg-cover bg-no-repeat rounded-md shadow-md transition-all duration-100 ease-in-out"
+           style="background-image: url('{% static "img/bmw.png" %}');">
+      </div>
     </div>
-
+  
+    <!-- Tezlik tugmalari -->
+    <div class="flex space-x-4">
+      <button id="slowBtn"
+              class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded-md shadow">
+        Sekin
+      </button>
+      <button id="normalBtn"
+              class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md shadow">
+        Normal
+      </button>
+      <button id="fastBtn"
+              class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-md shadow">
+        Tez
+      </button>
+    </div>
+  
+    <!-- Animatsiya -->
     <style>
       @keyframes roadMove {
         from {
           background-position-y: 0;
         }
-
         to {
           background-position-y: 80px;
         }
       }
     </style>
-
+  
+    <!-- JS -->
     <script>
       const game = document.getElementById('game');
       const car = document.getElementById('car');
       const scoreBox = document.getElementById('score');
       let carPosition = 135;
       let score = 0;
-
+      let speed = 30;
+  
       document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft' && carPosition > 0) {
           carPosition -= 45;
@@ -51,18 +77,17 @@
           car.style.left = carPosition + 'px';
         }
       });
-
+  
       function createObstacle() {
         const obs = document.createElement('div');
-        obs.className =
-          'absolute w-[50px] h-[100px] top-[-120px] rounded-md shadow-md';
+        obs.className = 'absolute w-[50px] h-[100px] top-[-120px] rounded-md shadow-md';
         obs.style.background = 'linear-gradient(to bottom, yellow, orange)';
-        obs.style.boxShadow = '0 0 8px rgba(255,255,0,0.6)';
         obs.style.left = Math.floor(Math.random() * 6) * 45 + 'px';
         game.appendChild(obs);
-
+  
         let move = setInterval(() => {
           let top = parseInt(window.getComputedStyle(obs).getPropertyValue('top'));
+  
           if (top >= 560) {
             clearInterval(move);
             obs.remove();
@@ -71,20 +96,34 @@
           } else {
             obs.style.top = top + 5 + 'px';
           }
-
+  
           let carLeft = parseInt(car.style.left);
           let obsLeft = parseInt(obs.style.left);
+  
           if (top > 420 && top < 520 && carLeft === obsLeft) {
             alert("💥 To‘qnashuv! Ball: " + score);
             location.reload();
           }
-        }, 30);
+        }, speed);
       }
-
-      setInterval(createObstacle, 1800);
+  
+      let interval = setInterval(createObstacle, 2000);
+  
+      // Tezlik tugmalari
+      document.getElementById('slowBtn').addEventListener('click', () => {
+        speed = 50;
+      });
+      document.getElementById('normalBtn').addEventListener('click', () => {
+        speed = 30;
+      });
+      document.getElementById('fastBtn').addEventListener('click', () => {
+        speed = 15;
+      });
     </script>
   </div>
+  
 
 </body>
 
 </html>
+{% endblock %}

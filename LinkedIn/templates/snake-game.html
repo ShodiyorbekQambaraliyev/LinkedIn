@@ -1,154 +1,108 @@
-<!DOCTYPE html>
-<html lang="uz">
+{% extends 'base.html' %}
+{% block title %}Snake O'yini{% endblock %}
+{% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snake O'yini</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+<div class="flex flex-col items-center mt-20">
+    <canvas id="snakeGame" width="400" height="400" class="bg-black border-4 border-white"></canvas>
 
-    body {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: #282c34;
-        font-family: Arial, sans-serif;
-    }
-
-    canvas {
-        background-color: #000;
-        display: block;
-        border: 3px solid #fff;
-        margin-bottom: 10px;
-    }
-
-    button {
-        margin: 5px;
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-    }
-</style>
-
-<body>
-    <canvas id="snakeGame" width="400" height="400"></canvas>
-    <div>
-        <button id="slowBtn">Sekin</button>
-        <button id="normalBtn">Normal</button>
-        <button id="fastBtn">Tez</button>
+    <div class="space-x-2">
+        <button id="slowBtn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded">Sekin</button>
+        <button id="normalBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Normal</button>
+        <button id="fastBtn" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">Tez</button>
     </div>
+</div>
 
-    <script>
-        const canvas = document.getElementById('snakeGame');
-        const ctx = canvas.getContext('2d');
-        const box = 20;
-        let snake = [{x: 9 * box, y: 10 * box}];
-        let food = {
-            x: Math.floor(Math.random() * 19 + 1) * box,
-            y: Math.floor(Math.random() * 19 + 1) * box
-        };
-        let direction;
-        let score = 0;
-        let gameSpeed = 150;
+<script>
+    const canvas = document.getElementById('snakeGame');
+    const ctx = canvas.getContext('2d');
+    const box = 20;
+    let snake = [{x: 9 * box, y: 10 * box}];
+    let food = {
+        x: Math.floor(Math.random() * 19 + 1) * box,
+        y: Math.floor(Math.random() * 19 + 1) * box
+    };
+    let direction;
+    let score = 0;
+    let gameSpeed = 150;
 
-        function drawFood() {
-            ctx.fillStyle = 'red';
-            ctx.fillRect(food.x, food.y, box, box);
-        }
+    function drawFood() {
+        ctx.fillStyle = 'red';
+        ctx.fillRect(food.x, food.y, box, box);
+    }
 
-        function drawSnake() {
-            snake.forEach(part => {
-                ctx.fillStyle = 'lime';
-                ctx.fillRect(part.x, part.y, box, box);
-                ctx.strokeStyle = '#000';
-                ctx.strokeRect(part.x, part.y, box, box);
-            });
-        }
-
-        document.addEventListener('keydown', changeDirection);
-        function changeDirection(event) {
-            if (event.key === 'ArrowLeft' && direction !== 'RIGHT') {
-                direction = 'LEFT';
-            } else if (event.key === 'ArrowUp' && direction !== 'DOWN') {
-                direction = 'UP';
-            } else if (event.key === 'ArrowRight' && direction !== 'LEFT') {
-                direction = 'RIGHT';
-            } else if (event.key === 'ArrowDown' && direction !== 'UP') {
-                direction = 'DOWN';
-            }
-        }
-
-        function moveSnake() {
-            const head = {...snake[0]};
-            if (direction === 'LEFT') head.x -= box;
-            if (direction === 'UP') head.y -= box;
-            if (direction === 'RIGHT') head.x += box;
-            if (direction === 'DOWN') head.y += box;
-
-            if (head.x === food.x && head.y === food.y) {
-                food = {
-                    x: Math.floor(Math.random() * 19 + 1) * box,
-                    y: Math.floor(Math.random() * 19 + 1) * box
-                };
-                score++;
-            } else {
-                snake.pop();
-            }
-
-            if (head.x < 0 || head.x >= canvas.width || head.y < 0 || head.y >= canvas.height || collision(head, snake)) {
-                clearInterval(game);
-                alert('Oyin tugadi! Ball: ' + score);
-                return;
-            }
-
-            snake.unshift(head);
-        }
-
-        function collision(head, snake) {
-            for (let i = 0; i < snake.length; i++) {
-                if (head.x === snake[i].x && head.y === snake[i].y) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        function update() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawFood();
-            drawSnake();
-            moveSnake();
-        }
-
-        let game = setInterval(update, gameSpeed);
-
-        document.getElementById('slowBtn').addEventListener('click', function() {
-            clearInterval(game);
-            gameSpeed = 300;
-            game = setInterval(update, gameSpeed);
+    function drawSnake() {
+        snake.forEach(part => {
+            ctx.fillStyle = 'lime';
+            ctx.fillRect(part.x, part.y, box, box);
+            ctx.strokeStyle = '#000';
+            ctx.strokeRect(part.x, part.y, box, box);
         });
+    }
 
-        document.getElementById('normalBtn').addEventListener('click', function() {
+    document.addEventListener('keydown', changeDirection);
+    function changeDirection(event) {
+        if (event.key === 'ArrowLeft' && direction !== 'RIGHT') direction = 'LEFT';
+        else if (event.key === 'ArrowUp' && direction !== 'DOWN') direction = 'UP';
+        else if (event.key === 'ArrowRight' && direction !== 'LEFT') direction = 'RIGHT';
+        else if (event.key === 'ArrowDown' && direction !== 'UP') direction = 'DOWN';
+    }
+
+    function moveSnake() {
+        const head = {...snake[0]};
+        if (direction === 'LEFT') head.x -= box;
+        if (direction === 'UP') head.y -= box;
+        if (direction === 'RIGHT') head.x += box;
+        if (direction === 'DOWN') head.y += box;
+
+        if (head.x === food.x && head.y === food.y) {
+            food = {
+                x: Math.floor(Math.random() * 19 + 1) * box,
+                y: Math.floor(Math.random() * 19 + 1) * box
+            };
+            score++;
+        } else {
+            snake.pop();
+        }
+
+        if (head.x < 0 || head.x >= canvas.width || head.y < 0 || head.y >= canvas.height || collision(head, snake)) {
             clearInterval(game);
-            gameSpeed = 150;
-            game = setInterval(update, gameSpeed);
-        });
+            alert('Oyin tugadi! Ball: ' + score);
+            return;
+        }
 
-        document.getElementById('fastBtn').addEventListener('click', function() {
-            clearInterval(game);
-            gameSpeed = 75;
-            game = setInterval(update, gameSpeed);
-        });
-    </script>
-</body>
+        snake.unshift(head);
+    }
 
-</html>
+    function collision(head, snake) {
+        return snake.some(part => part.x === head.x && part.y === head.y);
+    }
+
+    function update() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawFood();
+        drawSnake();
+        moveSnake();
+    }
+
+    let game = setInterval(update, gameSpeed);
+
+    document.getElementById('slowBtn').addEventListener('click', function() {
+        clearInterval(game);
+        gameSpeed = 300;
+        game = setInterval(update, gameSpeed);
+    });
+
+    document.getElementById('normalBtn').addEventListener('click', function() {
+        clearInterval(game);
+        gameSpeed = 150;
+        game = setInterval(update, gameSpeed);
+    });
+
+    document.getElementById('fastBtn').addEventListener('click', function() {
+        clearInterval(game);
+        gameSpeed = 75;
+        game = setInterval(update, gameSpeed);
+    });
+</script>
+
+{% endblock %}

@@ -1,6 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
 <!DOCTYPE html>
+{% load static %}
 <html lang="uz">
-
 <head>
     <meta charset="UTF-8" />
     <title>🐍 Ilon va Narvon</title>
@@ -63,8 +65,8 @@
 </head>
 
 <body>
-    <div class="bg-gradient-to-b from-indigo-800 to-indigo-500 min-h-screen flex flex-col items-center justify-center text-white p-4">
-        <h1 class="text-4xl font-bold mb-6 drop-shadow-lg">🐍 Ilon va Narvon</h1>
+    <div class="bg-gradient-to-b from-indigo-800 to-indigo-500 flex flex-col items-center justify-center text-white p-2 fixed w-full h-full">
+        <h1 class="text-4xl font-bold mb-4 drop-shadow-lg">🐍 Ilon va Narvon</h1>
 
         <div class="flex items-center justify-center gap-10 mb-4">
             <div class="flex items-center gap-2">
@@ -82,7 +84,7 @@
             <div id="board" class="board z-0"></div>
         </div>
 
-        <div class="flex items-center gap-4 mt-6">
+        <div class="flex items-center gap-4 mt-4">
             <button onclick="rollDice()" class="bg-yellow-300 hover:bg-yellow-400 text-black font-semibold px-5 py-2 rounded-lg shadow-lg transition">🎲 Qaytaring</button>
             <p id="info" class="text-xl font-semibold"></p>
         </div>
@@ -214,3 +216,4 @@
 </body>
 
 </html>
+{% endblock %}
