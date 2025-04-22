@@ -78,7 +78,10 @@ def update_profile_image(request):
             return redirect('profile')
     else:
         form = ProfileImageForm(instance=request.user.profile)
-    return render(request, 'your_template.html', {'form': form})
+    return render(request, 'home.html', {'form': form})
+
+def networks(request):
+    return render(request, 'network.html')
 
 def SnakeGame(request):
     return render(request, 'snake-game.html')

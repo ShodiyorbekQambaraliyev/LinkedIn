@@ -7,6 +7,7 @@ urlpatterns = [
     path('login/', login, name='login'),
     path('logout/', logout, name='logout'),
     path('profile/edit/<int:pk>/', edit_profile, name='edit_profile'),
+    path('networks/', networks, name='networks'),
     path('snake-game/', SnakeGame, name='snake-game'),
     path('car-game/', CarGame, name='car-game'),
     path('ladder-snake/', LadderSnake, name='ladder-snake'),

@@ -47,6 +47,10 @@ class ProfileEditForm(forms.ModelForm):
 
 
 class ProfileImageForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(ProfileImageForm, self).__init__(*args, **kwargs)
+        self.fields['img'].label = 'img'  # Labelni shu yerda o‘zgartiryapmiz
+
     class Meta:
         model = Profil
         fields = ['img']
