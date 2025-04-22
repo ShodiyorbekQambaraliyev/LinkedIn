@@ -5,7 +5,7 @@ from Authentication.models import Profil
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib import messages
 from .forms import ProfileEditForm
-from .forms import ProfileImageForm
+from .forms import ProfilImageForm
 
 def nav(request):
     return render(request, 'nav.html')
@@ -64,21 +64,22 @@ def edit_profile(request, pk):
         form = ProfileEditForm(request.POST, request.FILES,  instance=profile)
         if form.is_valid():
             form.save()
-            return redirect('profile')
+            return redirect('profil')
     else:
         form = ProfileEditForm(instance=profile)
     return render(request, 'edit_profile.html', {'form': form})
 
 
-def update_profile_image(request):
+def update_profile_img(request):
     if request.method == 'POST':
-        form = ProfileImageForm(request.POST, request.FILES, instance=request.user.profil)
+        form = ProfilImageForm(request.POST, request.FILES, instance=request.user.profil)
         if form.is_valid():
             form.save()
-            return redirect('profile')
+            return redirect('profil')
     else:
-        form = ProfileImageForm(instance=request.user.profile)
+        form = ProfilImageForm(instance=request.user.profil)
     return render(request, 'home.html', {'form': form})
+
 
 def networks(request):
     return render(request, 'network.html')
