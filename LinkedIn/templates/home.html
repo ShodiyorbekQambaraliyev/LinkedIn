@@ -22,21 +22,24 @@
             </a>
 
             <div class="w-[225px] h-auto bg-white rounded-b-lg px-2 pt-2 relative text-center pb-2">
-                
 
-                <img style="border: 2px dashed #AEBFCE;"
-                class="bg-[#E7E2DC] w-[68px] h-[68px] rounded-full top-[-28px] left-[20px] absolute object-cover" src="{{ user.profil.img.url }}" alt="Profil rasmi">
 
+                <img onclick="toggleModal()" style="border: 2px dashed #AEBFCE;"
+                    class="cursor-pointer bg-[#E7E2DC] w-[68px] h-[68px] rounded-full top-[-28px] left-[20px] absolute object-cover"
+                    src="{{ profile.img.url }}" alt="Profil rasmi">
+
+                <!-- Rasmni o‘zgartirish tugmasi -->
                 <button onclick="toggleModal()"
                     class="w-[24px] h-[24px] bg-[#0A66C2] rounded-full absolute top-[20px] right-[132px] text-white flex items-center justify-center">
                     <i class="fa-solid fa-plus text-[15px]"></i>
                 </button>
 
+                <!-- Modal oynasi -->
                 <div id="modalInput"
                     class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
                     <div class="bg-white p-6 rounded-xl shadow-lg w-80">
-                        <h2 class="text-lg font-semibold mb-4">Yangi rasm kiriting</h2>
-                        <form method="POST" enctype="multipart/form-data" action="{% url 'update_profile_img' %}">
+                        <h2>Profilni yangilash</h2>
+                        <form method="get" enctype="multipart/from-profil">
                             {% csrf_token %}
                             {{ form.as_p }}
                             <div class="mt-2 text-right flex justify-between items-center">

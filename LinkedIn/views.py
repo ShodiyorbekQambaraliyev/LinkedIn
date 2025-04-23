@@ -70,15 +70,34 @@ def edit_profile(request, pk):
     return render(request, 'edit_profile.html', {'form': form})
 
 
-def update_profile_img(request):
+def home_view(request):
+    profil = request.user.profil
+    profil_form = ProfilImageForm(instance=profil)
+    post_form = PostForm()
+
     if request.method == 'POST':
-        form = ProfilImageForm(request.POST, request.FILES, instance=request.user.profil)
-        if form.is_valid():
-            form.save()
-            return redirect('profil')
-    else:
-        form = ProfilImageForm(instance=request.user.profil)
-    return render(request, 'home.html', {'form': form})
+        # Profil rasm formasi yuborilganmi?
+        if 'profil_form' in request.POST:
+            profil_form = ProfilImageForm(request.POST, request.FILES, instance=profil)
+            if profil_form.is_valid():
+                profil_form.save()
+                return redirect('home')  # sahifani qayta yuklash
+
+        # Post formasi yuborilganmi?
+        elif 'post_form' in request.POST:
+            post_form = PostForm(request.POST, request.FILES)
+            if post_form.is_valid():
+                post = post_form.save(commit=False)
+                post.user = request.user
+                post.save()
+                return redirect('home')
+
+    context = {
+        'form': profil_form,  # Profil rasm formasi
+        'post_form': post_form,  # Post yaratish formasi
+        'profil': profil,
+    }
+    return render(request, 'home.html', context)
 
 
 def networks(request):
