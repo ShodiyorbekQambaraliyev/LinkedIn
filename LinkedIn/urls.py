@@ -1,9 +1,5 @@
 from django.urls import path
 from .views import *
-from django.conf import settings
-from django.conf.urls.static import static
-from LinkedIn import views
-
 
 urlpatterns = [
     path('', home, name='home'),
@@ -11,11 +7,7 @@ urlpatterns = [
     path('login/', login, name='login'),
     path('logout/', logout, name='logout'),
     path('profile/edit/<int:pk>/', edit_profile, name='edit_profile'),
-    path('networks/', networks, name='networks'),
-
-
-
     path('snake-game/', SnakeGame, name='snake-game'),
     path('car-game/', CarGame, name='car-game'),
     path('ladder-snake/', LadderSnake, name='ladder-snake'),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]

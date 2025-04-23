@@ -5,7 +5,7 @@ from Authentication.models import Profil
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib import messages
 from .forms import ProfileEditForm
-from .forms import ProfilImageForm
+from .forms import ProfileImageForm
 
 def nav(request):
     return render(request, 'nav.html')
@@ -64,44 +64,21 @@ def edit_profile(request, pk):
         form = ProfileEditForm(request.POST, request.FILES,  instance=profile)
         if form.is_valid():
             form.save()
-            return redirect('profil')
+            return redirect('profile')
     else:
         form = ProfileEditForm(instance=profile)
     return render(request, 'edit_profile.html', {'form': form})
 
 
-def home_view(request):
-    profil = request.user.profil
-    profil_form = ProfilImageForm(instance=profil)
-    post_form = PostForm()
-
+def update_profile_image(request):
     if request.method == 'POST':
-        # Profil rasm formasi yuborilganmi?
-        if 'profil_form' in request.POST:
-            profil_form = ProfilImageForm(request.POST, request.FILES, instance=profil)
-            if profil_form.is_valid():
-                profil_form.save()
-                return redirect('home')  # sahifani qayta yuklash
-
-        # Post formasi yuborilganmi?
-        elif 'post_form' in request.POST:
-            post_form = PostForm(request.POST, request.FILES)
-            if post_form.is_valid():
-                post = post_form.save(commit=False)
-                post.user = request.user
-                post.save()
-                return redirect('home')
-
-    context = {
-        'form': profil_form,  # Profil rasm formasi
-        'post_form': post_form,  # Post yaratish formasi
-        'profil': profil,
-    }
-    return render(request, 'home.html', context)
-
-
-def networks(request):
-    return render(request, 'network.html')
+        form = ProfileImageForm(request.POST, request.FILES, instance=request.user.profil)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = ProfileImageForm(instance=request.user.profile)
+    return render(request, 'home.html', {'form': form})
 
 def SnakeGame(request):
     return render(request, 'snake-game.html')
