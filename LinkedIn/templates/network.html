@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="flex flex-row gap-6 p-6 container_fluid">
-  <div class="w-full md:w-1/4 bg-white rounded-xl  p-4">
+  <div class="w-[300px] h-[340px] bg-white rounded-xl  p-4">
     <h2 class="text-lg font-semibold mb-4">Manage my network</h2>
     <ul class="space-y-3">
       <li class="flex items-center gap-2 text-gray-700"><i class="lucide lucide-users"></i>Connections <span
@@ -18,7 +18,7 @@
     </ul>
   </div>
 
-  <div class="w-full md:w-3/4 bg-white rounded-xl p-4">
+  <div class="w-full  bg-white rounded-xl p-4">
 
     <div class="flex items-center justify-between">
       <h3 class="text-[16px]">People you may know based on your recent activity</h3>
@@ -27,7 +27,136 @@
       </div>
     </div>
 
-    <div class="grid grid-cols-1 gap-4 mt-[15px]">
+    <div class=" flex flex-wrap gap-4 mt-[15px]">
+
+      <div class="relative bg-white rounded-xl shadow-md w-[186px] h-[282px] text-center overflow-hidden">
+
+        <div class="w-full h-[60px] bg-cover bg-center" style="background-image: url('{% static "img/pexels-pixabay-158063.jpg" %}');">
+        </div>
+      
+        <div class="absolute top-2 right-2 w-6 h-6 bg-white rounded-full flex items-center justify-center z-20 shadow">
+          <button class="text-gray-600 hover:text-black text-sm">
+            <i class="fas fa-times text-[13px]"></i>
+          </button>
+        </div>
+      
+        <img src="{% static 'img/hayolparaz.jpeg' %}" alt="Profile"
+             class="w-[90px] h-[90px] rounded-full object-cover mx-auto mt-[-40px] border-2 border-white z-10 relative" />
+      
+        <div class="px-2 mt-2 h-[87px]">
+          <p class="font-semibold text-[16px] text-gray-900 mt-1">Ritesh Agarwal
+            <i class="fab fa-linkedin text-blue-600"></i>
+          </p>
+        
+          <p class="text-gray-600 text-[14px] mt-2 leading-tight">
+            OYO Founder & Group<br />CEO | Revolutionizing
+          </p>
+        </div>
+      
+        <p class="text-[12px] text-gray-400 mt-3">Based on your profile</p>
+      
+        <button class="mt-2 w-[90%] mx-auto border border-blue-600 text-blue-600 rounded-full py-[6px] hover:bg-blue-50 text-xs font-semibold">
+          <i class="fas fa-user-plus mr-1"></i> Connect
+        </button>
+      
+      </div>
+
+      <div class="relative bg-white rounded-xl shadow-md w-[186px] h-[282px] text-center overflow-hidden">
+
+        <div class="w-full h-[60px] bg-cover bg-center" style="background-image: url('{% static "img/pexels-pixabay-158063.jpg" %}');">
+        </div>
+      
+        <div class="absolute top-2 right-2 w-6 h-6 bg-white rounded-full flex items-center justify-center z-20 shadow">
+          <button class="text-gray-600 hover:text-black text-sm">
+            <i class="fas fa-times text-[13px]"></i>
+          </button>
+        </div>
+      
+        <img src="{% static 'img/hayolparaz.jpeg' %}" alt="Profile"
+             class="w-[90px] h-[90px] rounded-full object-cover mx-auto mt-[-40px] border-2 border-white z-10 relative" />
+      
+        <div class="px-2 mt-2 h-[87px]">
+          <p class="font-semibold text-[16px] text-gray-900 mt-1">Ritesh Agarwal
+            <i class="fab fa-linkedin text-blue-600"></i>
+          </p>
+        
+          <p class="text-gray-600 text-[14px] mt-2 leading-tight">
+            OYO Founder & Group<br />CEO | Revolutionizing
+          </p>
+        </div>
+      
+        <p class="text-[12px] text-gray-400 mt-3">Based on your profile</p>
+      
+        <button class="mt-2 w-[90%] mx-auto border border-blue-600 text-blue-600 rounded-full py-[6px] hover:bg-blue-50 text-xs font-semibold">
+          <i class="fas fa-user-plus mr-1"></i> Connect
+        </button>
+      
+      </div>
+
+
+      <div class="relative bg-white rounded-xl shadow-md w-[186px] h-[282px] text-center overflow-hidden">
+
+        <div class="w-full h-[60px] bg-cover bg-center" style="background-image: url('{% static "img/pexels-pixabay-158063.jpg" %}');">
+        </div>
+      
+        <div class="absolute top-2 right-2 w-6 h-6 bg-white rounded-full flex items-center justify-center z-20 shadow">
+          <button class="text-gray-600 hover:text-black text-sm">
+            <i class="fas fa-times text-[13px]"></i>
+          </button>
+        </div>
+      
+        <img src="{% static 'img/hayolparaz.jpeg' %}" alt="Profile"
+             class="w-[90px] h-[90px] rounded-full object-cover mx-auto mt-[-40px] border-2 border-white z-10 relative" />
+      
+        <div class="px-2 mt-2 h-[87px]">
+          <p class="font-semibold text-[16px] text-gray-900 mt-1">Ritesh Agarwal
+            <i class="fab fa-linkedin text-blue-600"></i>
+          </p>
+        
+          <p class="text-gray-600 text-[14px] mt-2 leading-tight">
+            OYO Founder & Group<br />CEO | Revolutionizing
+          </p>
+        </div>
+      
+        <p class="text-[12px] text-gray-400 mt-3">Based on your profile</p>
+      
+        <button class="mt-2 w-[90%] mx-auto border border-blue-600 text-blue-600 rounded-full py-[6px] hover:bg-blue-50 text-xs font-semibold">
+          <i class="fas fa-user-plus mr-1"></i> Connect
+        </button>
+      
+      </div>
+
+      <div class="relative bg-white rounded-xl shadow-md w-[186px] h-[282px] text-center overflow-hidden">
+
+        <div class="w-full h-[60px] bg-cover bg-center" style="background-image: url('{% static "img/pexels-pixabay-158063.jpg" %}');">
+        </div>
+      
+        <div class="absolute top-2 right-2 w-6 h-6 bg-white rounded-full flex items-center justify-center z-20 shadow">
+          <button class="text-gray-600 hover:text-black text-sm">
+            <i class="fas fa-times text-[13px]"></i>
+          </button>
+        </div>
+      
+        <img src="{% static 'img/hayolparaz.jpeg' %}" alt="Profile"
+             class="w-[90px] h-[90px] rounded-full object-cover mx-auto mt-[-40px] border-2 border-white z-10 relative" />
+      
+        <div class="px-2 mt-2 h-[87px]">
+          <p class="font-semibold text-[16px] text-gray-900 mt-1">Ritesh Agarwal
+            <i class="fab fa-linkedin text-blue-600"></i>
+          </p>
+        
+          <p class="text-gray-600 text-[14px] mt-2 leading-tight">
+            OYO Founder & Group<br />CEO | Revolutionizing
+          </p>
+        </div>
+      
+        <p class="text-[12px] text-gray-400 mt-3">Based on your profile</p>
+      
+        <button class="mt-2 w-[90%] mx-auto border border-blue-600 text-blue-600 rounded-full py-[6px] hover:bg-blue-50 text-xs font-semibold">
+          <i class="fas fa-user-plus mr-1"></i> Connect
+        </button>
+      
+      </div>
 
       <div class="relative bg-white rounded-xl shadow-md w-[186px] h-[282px] text-center overflow-hidden">
 
@@ -61,7 +190,11 @@
       
       </div>
       
+    </div>
+
+
   </div>
 </div>
+
 
 {% endblock %}

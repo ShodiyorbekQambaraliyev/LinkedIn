@@ -27,6 +27,7 @@ def home(request):
 
     return render(request, 'home.html', {'form': form, 'posts': posts, 'profile': profile})
 
+
 def delete_post(request, post_id):
     post = get_object_or_404(Post, id=post_id)  # Post mavjudligini tekshiramiz
     post.delete()
