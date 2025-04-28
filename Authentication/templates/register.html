@@ -12,6 +12,7 @@
     <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Ro‘yxatdan o‘tish</h2>
 
     <form action="#" method="POST" class="space-y-4">
+        {% csrf_token %}
       <div>
         <label for="name" class="block text-sm font-medium text-gray-700">Ismingiz</label>
         <input type="text" id="name" name="name" required
