@@ -2,194 +2,283 @@
 {% load static %}
 {% block content %}
 
-<div class="flex flex-row gap-6 p-6 container_fluid">
-  <div class="w-[300px] h-[340px] bg-white rounded-xl  p-4">
-    <h2 class="text-lg font-semibold mb-4">Manage my network</h2>
-    <ul class="space-y-3">
-      <li class="flex items-center gap-2 text-gray-700"><i class="lucide lucide-users"></i>Connections <span
-          class="ml-auto">1</span></li>
-      <li class="flex items-center gap-2 text-gray-700"><i class="lucide lucide-user-plus"></i>Following & followers
-      </li>
-      <li class="flex items-center gap-2 text-gray-700"><i class="lucide lucide-users-2"></i>Groups</li>
-      <li class="flex items-center gap-2 text-gray-700"><i class="lucide lucide-calendar"></i>Events</li>
-      <li class="flex items-center gap-2 text-gray-700"><i class="lucide lucide-file-text"></i>Pages</li>
-      <li class="flex items-center gap-2 text-gray-700"><i class="lucide lucide-mail"></i>Newsletters <span
-          class="ml-auto">1</span></li>
-    </ul>
+<div class="flex justify-between pt-6 container_fluid">
+  <div class="w-[300px] h-[340px] bg-white border rounded-lg shadow p-4 text-sm font-medium space-y-3">
+    <h2 class="text-black text-base font-semibold">Manage my network</h2>
+    <div class="flex justify-between items-center text-gray-700">
+      <div class="flex items-center space-x-2">
+        <svg class="w-5 h-5 text-gray-700" fill="currentColor" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zM8 11c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5C15 14.17 10.33 13 8 13zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+        <span>Connections</span>
+      </div>
+      <span class="text-gray-900">1</span>
+    </div>
+    <div class="flex justify-between items-center text-gray-700">
+      <div class="flex items-center space-x-2">
+        <svg class="w-5 h-5 text-gray-700" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4S14.21 4 12 4 8 5.79 8 8s1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        <span>Following & followers</span>
+      </div>
+    </div>
+    <div class="flex justify-between items-center text-gray-700">
+      <div class="flex items-center space-x-2">
+        <svg class="w-5 h-5 text-gray-700" fill="currentColor" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zM8 11c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h6v-2c0-.71.1-1.39.28-2.05C8.48 14.35 8.74 14 9 14s.52.35.72.95c.18.66.28 1.34.28 2.05v2h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+        <span>Groups</span>
+      </div>
+    </div>
+    <div class="flex justify-between items-center text-gray-700">
+      <div class="flex items-center space-x-2">
+        <svg class="w-5 h-5 text-gray-700" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14l4-4h12c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
+        <span>Events</span>
+      </div>
+    </div>
+    <div class="flex justify-between items-center text-gray-700">
+      <div class="flex items-center space-x-2">
+        <svg class="w-5 h-5 text-gray-700" fill="currentColor" viewBox="0 0 24 24"><path d="M3 4v16h18V4H3zm16 14H5V6h14v12z"/></svg>
+        <span>Pages</span>
+      </div>
+    </div>
+    <div class="flex justify-between items-center text-gray-700">
+      <div class="flex items-center space-x-2">
+        <svg class="w-5 h-5 text-gray-700" fill="currentColor" viewBox="0 0 24 24"><path d="M3 4h18v2H3zm0 6h18v2H3zm0 6h10v2H3z"/></svg>
+        <span>Newsletters</span>
+      </div>
+      <span class="text-gray-900">1</span>
+    </div>
   </div>
+  
+  
 
-  <div class="w-full  bg-white rounded-xl p-4">
+  <div class="">
 
-    <div class="flex items-center justify-between">
-      <h3 class="text-[16px]">People you may know based on your recent activity</h3>
-      <div>
-        <button class="ml-auto text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark"></i></button>
+    <div class="w-[804px] flex flex-col items-center">
+  
+      <!-- White Card -->
+      <div class="bg-white p-6 rounded-lg shadow  flex items-center gap-6">
+  
+        <!-- Game 1 -->
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 bg-orange-400 rounded flex items-center justify-center">
+            <span class="text-white text-2xl font-bold">Z</span>
+          </div>
+          <div class="flex flex-col">
+            <div class="text-base font-semibold">Zip <span class="text-gray-500">#39</span></div>
+            <div class="text-xs text-gray-400">Friday, Apr 25</div>
+          </div>
+          <button class="ml-4 border border-blue-500 text-blue-500 font-semibold py-1 px-4 rounded-full text-sm hover:bg-blue-50">
+            Solve
+          </button>
+        </div>
+  
+        <!-- Separator -->
+        <div class="w-px h-12 bg-gray-300"></div>
+  
+        <!-- Game 2 -->
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 bg-purple-400 rounded flex items-center justify-center">
+            <span class="text-white text-2xl font-bold">Q</span>
+          </div>
+          <div class="flex flex-col">
+            <div class="text-base font-semibold">Queens <span class="text-gray-500">#360</span></div>
+            <div class="text-xs text-gray-400">Friday, Apr 25</div>
+          </div>
+          <button class="ml-4 border border-blue-500 text-blue-500 font-semibold py-1 px-4 rounded-full text-sm hover:bg-blue-50">
+            Solve
+          </button>
+        </div>
+  
+        <!-- Separator -->
+        <div class="w-px h-12 bg-gray-300"></div>
+  
+        <!-- Game 3 -->
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 bg-yellow-400 rounded flex items-center justify-center">
+            <span class="text-white text-2xl font-bold">T</span>
+          </div>
+          <div class="flex flex-col">
+            <div class="text-base font-semibold">Tango <span class="text-gray-500">#200</span></div>
+            <div class="text-xs text-gray-400">Friday, Apr 25</div>
+          </div>
+          <button class="ml-4 border border-blue-500 text-blue-500 font-semibold py-1 px-4 rounded-full text-sm hover:bg-blue-50">
+            Solve
+          </button>
+        </div>
+  
       </div>
     </div>
 
-    <div class=" flex flex-wrap gap-4 mt-[15px]">
+    <div class="w-[804px]  bg-white rounded-xl p-[12px] mt-[10px]">
 
-      <div class="relative bg-white rounded-xl shadow-md w-[186px] h-[282px] text-center overflow-hidden">
-
-        <div class="w-full h-[60px] bg-cover bg-center" style="background-image: url('{% static "img/pexels-pixabay-158063.jpg" %}');">
+      <div class="flex items-center justify-between">
+        <h3 class="text-[16px]">People you may know based on your recent activity</h3>
+        <div>
+          <button class="ml-auto text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark"></i></button>
         </div>
-      
-        <div class="absolute top-2 right-2 w-6 h-6 bg-white rounded-full flex items-center justify-center z-20 shadow">
-          <button class="text-gray-600 hover:text-black text-sm">
-            <i class="fas fa-times text-[13px]"></i>
-          </button>
-        </div>
-      
-        <img src="{% static 'img/hayolparaz.jpeg' %}" alt="Profile"
-             class="w-[90px] h-[90px] rounded-full object-cover mx-auto mt-[-40px] border-2 border-white z-10 relative" />
-      
-        <div class="px-2 mt-2 h-[87px]">
-          <p class="font-semibold text-[16px] text-gray-900 mt-1">Ritesh Agarwal
-            <i class="fab fa-linkedin text-blue-600"></i>
-          </p>
+      </div>
+  
+      <div class=" flex flex-wrap gap-3 mt-[15px]">
+  
+        <div class="relative bg-white rounded-xl shadow-md w-[186px] h-[282px] text-center overflow-hidden">
+  
+          <div class="w-full h-[60px] bg-cover bg-center" style="background-image: url('{% static "img/pexels-pixabay-158063.jpg" %}');">
+          </div>
         
-          <p class="text-gray-600 text-[14px] mt-2 leading-tight">
-            OYO Founder & Group<br />CEO | Revolutionizing
-          </p>
+          <div class="absolute top-2 right-2 w-6 h-6 bg-white rounded-full flex items-center justify-center z-20 shadow">
+            <button class="text-gray-600 hover:text-black text-sm">
+              <i class="fas fa-times text-[13px]"></i>
+            </button>
+          </div>
+        
+          <img src="{% static 'img/hayolparaz.jpeg' %}" alt="Profile"
+               class="w-[90px] h-[90px] rounded-full object-cover mx-auto mt-[-40px] border-2 border-white z-10 relative" />
+        
+          <div class="px-2 mt-2 h-[87px]">
+            <p class="font-semibold text-[16px] text-gray-900 mt-1">Ritesh Agarwal
+              <i class="fab fa-linkedin text-blue-600"></i>
+            </p>
+          
+            <p class="text-gray-600 text-[14px] mt-2 leading-tight">
+              OYO Founder & Group<br />CEO | Revolutionizing
+            </p>
+          </div>
+        
+          <p class="text-[12px] text-gray-400 mt-3">Based on your profile</p>
+        
+          <button class="mt-2 w-[90%] mx-auto border border-blue-600 text-blue-600 rounded-full py-[6px] hover:bg-blue-50 text-xs font-semibold">
+            <i class="fas fa-user-plus mr-1"></i> Connect
+          </button>
+        
         </div>
-      
-        <p class="text-[12px] text-gray-400 mt-3">Based on your profile</p>
-      
-        <button class="mt-2 w-[90%] mx-auto border border-blue-600 text-blue-600 rounded-full py-[6px] hover:bg-blue-50 text-xs font-semibold">
-          <i class="fas fa-user-plus mr-1"></i> Connect
-        </button>
-      
+  
+        <div class="relative bg-white rounded-xl shadow-md w-[186px] h-[282px] text-center overflow-hidden">
+  
+          <div class="w-full h-[60px] bg-cover bg-center" style="background-image: url('{% static "img/pexels-pixabay-158063.jpg" %}');">
+          </div>
+        
+          <div class="absolute top-2 right-2 w-6 h-6 bg-white rounded-full flex items-center justify-center z-20 shadow">
+            <button class="text-gray-600 hover:text-black text-sm">
+              <i class="fas fa-times text-[13px]"></i>
+            </button>
+          </div>
+        
+          <img src="{% static 'img/hayolparaz.jpeg' %}" alt="Profile"
+               class="w-[90px] h-[90px] rounded-full object-cover mx-auto mt-[-40px] border-2 border-white z-10 relative" />
+        
+          <div class="px-2 mt-2 h-[87px]">
+            <p class="font-semibold text-[16px] text-gray-900 mt-1">Ritesh Agarwal
+              <i class="fab fa-linkedin text-blue-600"></i>
+            </p>
+          
+            <p class="text-gray-600 text-[14px] mt-2 leading-tight">
+              OYO Founder & Group<br />CEO | Revolutionizing
+            </p>
+          </div>
+        
+          <p class="text-[12px] text-gray-400 mt-3">Based on your profile</p>
+        
+          <button class="mt-2 w-[90%] mx-auto border border-blue-600 text-blue-600 rounded-full py-[6px] hover:bg-blue-50 text-xs font-semibold">
+            <i class="fas fa-user-plus mr-1"></i> Connect
+          </button>
+        
+        </div>
+  
+  
+        <div class="relative bg-white rounded-xl shadow-md w-[186px] h-[282px] text-center overflow-hidden">
+  
+          <div class="w-full h-[60px] bg-cover bg-center" style="background-image: url('{% static "img/pexels-pixabay-158063.jpg" %}');">
+          </div>
+        
+          <div class="absolute top-2 right-2 w-6 h-6 bg-white rounded-full flex items-center justify-center z-20 shadow">
+            <button class="text-gray-600 hover:text-black text-sm">
+              <i class="fas fa-times text-[13px]"></i>
+            </button>
+          </div>
+        
+          <img src="{% static 'img/hayolparaz.jpeg' %}" alt="Profile"
+               class="w-[90px] h-[90px] rounded-full object-cover mx-auto mt-[-40px] border-2 border-white z-10 relative" />
+        
+          <div class="px-2 mt-2 h-[87px]">
+            <p class="font-semibold text-[16px] text-gray-900 mt-1">Ritesh Agarwal
+              <i class="fab fa-linkedin text-blue-600"></i>
+            </p>
+          
+            <p class="text-gray-600 text-[14px] mt-2 leading-tight">
+              OYO Founder & Group<br />CEO | Revolutionizing
+            </p>
+          </div>
+        
+          <p class="text-[12px] text-gray-400 mt-3">Based on your profile</p>
+        
+          <button class="mt-2 w-[90%] mx-auto border border-blue-600 text-blue-600 rounded-full py-[6px] hover:bg-blue-50 text-xs font-semibold">
+            <i class="fas fa-user-plus mr-1"></i> Connect
+          </button>
+        
+        </div>
+  
+        <div class="relative bg-white rounded-xl shadow-md w-[186px] h-[282px] text-center overflow-hidden">
+  
+          <div class="w-full h-[60px] bg-cover bg-center" style="background-image: url('{% static "img/pexels-pixabay-158063.jpg" %}');">
+          </div>
+        
+          <div class="absolute top-2 right-2 w-6 h-6 bg-white rounded-full flex items-center justify-center z-20 shadow">
+            <button class="text-gray-600 hover:text-black text-sm">
+              <i class="fas fa-times text-[13px]"></i>
+            </button>
+          </div>
+        
+          <img src="{% static 'img/hayolparaz.jpeg' %}" alt="Profile"
+               class="w-[90px] h-[90px] rounded-full object-cover mx-auto mt-[-40px] border-2 border-white z-10 relative" />
+        
+          <div class="px-2 mt-2 h-[87px]">
+            <p class="font-semibold text-[16px] text-gray-900 mt-1">Ritesh Agarwal
+              <i class="fab fa-linkedin text-blue-600"></i>
+            </p>
+          
+            <p class="text-gray-600 text-[14px] mt-2 leading-tight">
+              OYO Founder & Group<br />CEO | Revolutionizing
+            </p>
+          </div>
+        
+          <p class="text-[12px] text-gray-400 mt-3">Based on your profile</p>
+        
+          <button class="mt-2 w-[90%] mx-auto border border-blue-600 text-blue-600 rounded-full py-[6px] hover:bg-blue-50 text-xs font-semibold">
+            <i class="fas fa-user-plus mr-1"></i> Connect
+          </button>
+        
+        </div>
+  
+        <div class="relative bg-white rounded-xl shadow-md w-[186px] h-[282px] text-center overflow-hidden">
+  
+          <div class="w-full h-[60px] bg-cover bg-center" style="background-image: url('{% static "img/pexels-pixabay-158063.jpg" %}');">
+          </div>
+        
+          <div class="absolute top-2 right-2 w-6 h-6 bg-white rounded-full flex items-center justify-center z-20 shadow">
+            <button class="text-gray-600 hover:text-black text-sm">
+              <i class="fas fa-times text-[13px]"></i>
+            </button>
+          </div>
+        
+          <img src="{% static 'img/hayolparaz.jpeg' %}" alt="Profile"
+               class="w-[90px] h-[90px] rounded-full object-cover mx-auto mt-[-40px] border-2 border-white z-10 relative" />
+        
+          <div class="px-2 mt-2 h-[87px]">
+            <p class="font-semibold text-[16px] text-gray-900 mt-1">Ritesh Agarwal
+              <i class="fab fa-linkedin text-blue-600"></i>
+            </p>
+          
+            <p class="text-gray-600 text-[14px] mt-2 leading-tight">
+              OYO Founder & Group<br />CEO | Revolutionizing
+            </p>
+          </div>
+        
+          <p class="text-[12px] text-gray-400 mt-3">Based on your profile</p>
+        
+          <button class="mt-2 w-[90%] mx-auto border border-blue-600 text-blue-600 rounded-full py-[6px] hover:bg-blue-50 text-xs font-semibold">
+            <i class="fas fa-user-plus mr-1"></i> Connect
+          </button>
+        
+        </div>
+        
       </div>
 
-      <div class="relative bg-white rounded-xl shadow-md w-[186px] h-[282px] text-center overflow-hidden">
-
-        <div class="w-full h-[60px] bg-cover bg-center" style="background-image: url('{% static "img/pexels-pixabay-158063.jpg" %}');">
-        </div>
-      
-        <div class="absolute top-2 right-2 w-6 h-6 bg-white rounded-full flex items-center justify-center z-20 shadow">
-          <button class="text-gray-600 hover:text-black text-sm">
-            <i class="fas fa-times text-[13px]"></i>
-          </button>
-        </div>
-      
-        <img src="{% static 'img/hayolparaz.jpeg' %}" alt="Profile"
-             class="w-[90px] h-[90px] rounded-full object-cover mx-auto mt-[-40px] border-2 border-white z-10 relative" />
-      
-        <div class="px-2 mt-2 h-[87px]">
-          <p class="font-semibold text-[16px] text-gray-900 mt-1">Ritesh Agarwal
-            <i class="fab fa-linkedin text-blue-600"></i>
-          </p>
-        
-          <p class="text-gray-600 text-[14px] mt-2 leading-tight">
-            OYO Founder & Group<br />CEO | Revolutionizing
-          </p>
-        </div>
-      
-        <p class="text-[12px] text-gray-400 mt-3">Based on your profile</p>
-      
-        <button class="mt-2 w-[90%] mx-auto border border-blue-600 text-blue-600 rounded-full py-[6px] hover:bg-blue-50 text-xs font-semibold">
-          <i class="fas fa-user-plus mr-1"></i> Connect
-        </button>
-      
-      </div>
-
-
-      <div class="relative bg-white rounded-xl shadow-md w-[186px] h-[282px] text-center overflow-hidden">
-
-        <div class="w-full h-[60px] bg-cover bg-center" style="background-image: url('{% static "img/pexels-pixabay-158063.jpg" %}');">
-        </div>
-      
-        <div class="absolute top-2 right-2 w-6 h-6 bg-white rounded-full flex items-center justify-center z-20 shadow">
-          <button class="text-gray-600 hover:text-black text-sm">
-            <i class="fas fa-times text-[13px]"></i>
-          </button>
-        </div>
-      
-        <img src="{% static 'img/hayolparaz.jpeg' %}" alt="Profile"
-             class="w-[90px] h-[90px] rounded-full object-cover mx-auto mt-[-40px] border-2 border-white z-10 relative" />
-      
-        <div class="px-2 mt-2 h-[87px]">
-          <p class="font-semibold text-[16px] text-gray-900 mt-1">Ritesh Agarwal
-            <i class="fab fa-linkedin text-blue-600"></i>
-          </p>
-        
-          <p class="text-gray-600 text-[14px] mt-2 leading-tight">
-            OYO Founder & Group<br />CEO | Revolutionizing
-          </p>
-        </div>
-      
-        <p class="text-[12px] text-gray-400 mt-3">Based on your profile</p>
-      
-        <button class="mt-2 w-[90%] mx-auto border border-blue-600 text-blue-600 rounded-full py-[6px] hover:bg-blue-50 text-xs font-semibold">
-          <i class="fas fa-user-plus mr-1"></i> Connect
-        </button>
-      
-      </div>
-
-      <div class="relative bg-white rounded-xl shadow-md w-[186px] h-[282px] text-center overflow-hidden">
-
-        <div class="w-full h-[60px] bg-cover bg-center" style="background-image: url('{% static "img/pexels-pixabay-158063.jpg" %}');">
-        </div>
-      
-        <div class="absolute top-2 right-2 w-6 h-6 bg-white rounded-full flex items-center justify-center z-20 shadow">
-          <button class="text-gray-600 hover:text-black text-sm">
-            <i class="fas fa-times text-[13px]"></i>
-          </button>
-        </div>
-      
-        <img src="{% static 'img/hayolparaz.jpeg' %}" alt="Profile"
-             class="w-[90px] h-[90px] rounded-full object-cover mx-auto mt-[-40px] border-2 border-white z-10 relative" />
-      
-        <div class="px-2 mt-2 h-[87px]">
-          <p class="font-semibold text-[16px] text-gray-900 mt-1">Ritesh Agarwal
-            <i class="fab fa-linkedin text-blue-600"></i>
-          </p>
-        
-          <p class="text-gray-600 text-[14px] mt-2 leading-tight">
-            OYO Founder & Group<br />CEO | Revolutionizing
-          </p>
-        </div>
-      
-        <p class="text-[12px] text-gray-400 mt-3">Based on your profile</p>
-      
-        <button class="mt-2 w-[90%] mx-auto border border-blue-600 text-blue-600 rounded-full py-[6px] hover:bg-blue-50 text-xs font-semibold">
-          <i class="fas fa-user-plus mr-1"></i> Connect
-        </button>
-      
-      </div>
-
-      <div class="relative bg-white rounded-xl shadow-md w-[186px] h-[282px] text-center overflow-hidden">
-
-        <div class="w-full h-[60px] bg-cover bg-center" style="background-image: url('{% static "img/pexels-pixabay-158063.jpg" %}');">
-        </div>
-      
-        <div class="absolute top-2 right-2 w-6 h-6 bg-white rounded-full flex items-center justify-center z-20 shadow">
-          <button class="text-gray-600 hover:text-black text-sm">
-            <i class="fas fa-times text-[13px]"></i>
-          </button>
-        </div>
-      
-        <img src="{% static 'img/hayolparaz.jpeg' %}" alt="Profile"
-             class="w-[90px] h-[90px] rounded-full object-cover mx-auto mt-[-40px] border-2 border-white z-10 relative" />
-      
-        <div class="px-2 mt-2 h-[87px]">
-          <p class="font-semibold text-[16px] text-gray-900 mt-1">Ritesh Agarwal
-            <i class="fab fa-linkedin text-blue-600"></i>
-          </p>
-        
-          <p class="text-gray-600 text-[14px] mt-2 leading-tight">
-            OYO Founder & Group<br />CEO | Revolutionizing
-          </p>
-        </div>
-      
-        <p class="text-[12px] text-gray-400 mt-3">Based on your profile</p>
-      
-        <button class="mt-2 w-[90%] mx-auto border border-blue-600 text-blue-600 rounded-full py-[6px] hover:bg-blue-50 text-xs font-semibold">
-          <i class="fas fa-user-plus mr-1"></i> Connect
-        </button>
-      
-      </div>
-      
     </div>
 
 

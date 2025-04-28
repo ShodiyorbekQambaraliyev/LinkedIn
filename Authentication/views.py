@@ -13,6 +13,9 @@ def profil(request):
 
     return render(request, 'profile.html', {'profil': profil, 'post': post})
 
+def register(request):
+    return render(request, 'register.html')
+
 
 
 
