@@ -1,44 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ro‘yxatdan o‘tish</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
 
   <div class="bg-white p-8 rounded-2xl shadow-md w-full max-w-md">
     <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Ro‘yxatdan o‘tish</h2>
 
-    <form action="#" method="POST" class="space-y-4">
-        {% csrf_token %}
+    <form action="#" method="post" class="space-y-4">
+      {% csrf_token %}
       <div>
         <label for="name" class="block text-sm font-medium text-gray-700">Ismingiz</label>
-        <input type="text" id="name" name="name" required
-               class="mt-1 w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <input type="text" id="name" name="username" required
+          class="mt-1 w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500" />
       </div>
 
       <div>
         <label for="email" class="block text-sm font-medium text-gray-700">Email manzilingiz</label>
         <input type="email" id="email" name="email" required
-               class="mt-1 w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          class="mt-1 w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500" />
       </div>
 
       <div>
         <label for="password" class="block text-sm font-medium text-gray-700">Parol</label>
         <input type="password" id="password" name="password" required
-               class="mt-1 w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          class="mt-1 w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500" />
       </div>
 
       <div>
         <label for="confirm-password" class="block text-sm font-medium text-gray-700">Parolni tasdiqlang</label>
-        <input type="password" id="confirm-password" name="confirm-password" required
-               class="mt-1 w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <input type="password" id="confirm-password" name="password_confirm" required
+          class="mt-1 w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500" />
       </div>
 
       <button type="submit"
-              class="w-full bg-blue-600 text-white py-2 rounded-xl hover:bg-blue-700 transition duration-200">
+        class="w-full bg-blue-600 text-white py-2 rounded-xl hover:bg-blue-700 transition duration-200">
         Ro‘yxatdan o‘tish
       </button>
     </form>
@@ -50,4 +52,5 @@
   </div>
 
 </body>
+
 </html>

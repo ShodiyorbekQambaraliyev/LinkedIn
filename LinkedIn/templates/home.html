@@ -25,64 +25,14 @@
                     class="bg-[#E7E2DC] w-[68px] h-[68px] rounded-full top-[-28px] left-[20px] absolute object-cover"
                     src="{{ profile.img.url }}" alt="">
 
-                <button onclick="toggleModal()"
-                    class="w-[24px] h-[24px] bg-[#0A66C2] rounded-full absolute top-[20px] right-[132px] text-white flex items-center justify-center">
-                    <i class="fa-solid fa-plus text-[15px]"></i>
-                </button>
-                
-                <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center">
-                    <div class="bg-white p-6 rounded-lg shadow-lg w-80 relative transform translate-x-[-50%] translate-y-[-50%] left-1/2 top-1/2">
-                        <label for="modal-toggle"
-                            class="absolute top-3 right-3 text-red-500 text-xl cursor-pointer" onclick="toggleModal()">&times;</label>
-                        <h2 class="text-lg font-semibold mb-4">Rasm tanlang</h2>
-                
-                        <form method="POST" enctype="multipart/form-data" class="flex flex-col items-center">
-                            {% csrf_token %}
-                            <label for="rasm_input"
-                                class="w-full h-auto border-2 border-dashed border-gray-400 flex flex-col justify-center items-center bg-gray-50 rounded-lg cursor-pointer hover:border-blue-500 transition relative overflow-hidden">
-                                <span class="text-gray-600 h-40 flex items-center justify-center" id="label-text">Rasm
-                                    tanlang</span>
-                                <img id="preview" class="hidden rounded-lg">
-                                <input type="file" id="rasm_input" name="image" class="hidden" accept="image/*">
-                            </label>
-                
-                            <input type="text" name="text" placeholder="Post haqida yozing..."
-                                class="w-full border p-2 rounded mb-3 mt-4 outline-none">
-                
-                            <button type="submit"
-                                class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">Postni
-                                yaratish</button>
-                        </form>
-                    </div>
-                </div>
-                
-                <script>
-                    let input = document.getElementById("rasm_input");
-                    let preview = document.getElementById("preview");
-                    let labelText = document.getElementById("label-text");
-                
-                    input.onchange = function () {
-                        let file = input.files[0];
-                        if (file && file.type.startsWith("image/")) {
-                            var reader = new FileReader();
-                            reader.onload = function (e) {
-                                preview.src = e.target.result;
-                                preview.classList.remove("hidden");
-                                labelText.style.display = "none";
-                                preview.style.width = "100%";
-                                preview.style.height = "100%";
-                            };
-                            reader.readAsDataURL(file);
-                        }
-                    };
-                
-                    // Modalni ko'rsatish va yashirish uchun funksiyalar
-                    function toggleModal() {
-                        let modal = document.getElementById("modal");
-                        modal.classList.toggle("hidden");
-                    }
-                </script>
-                
+                    <a href="{%  url 'edit_profile' profile.id %}">
+                        <button
+                            class="w-[24px] h-[24px] bg-[#0A66C2] rounded-full absolute top-[20px] right-[132px] text-white flex items-center justify-center">
+                            <i class="fa-solid fa-plus text-[15px]"></i>
+                        </button>
+                    </a>
+                    
+
 
 
 

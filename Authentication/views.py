@@ -17,10 +17,6 @@ def profil(request):
     return render(request, 'profile.html', {'profil': profil, 'post': post})
 
 def register(request):
-
-    if request.user.is_authenticated:
-        messages.success(request, 'Siz profilga kirdingiz')
-        return redirect('home')
     
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -39,11 +35,12 @@ def register(request):
         user = User.objects.create_user(username=username, email=email, password=password)
         user.save()
 
-        user = authenticate(request, username=username, password=password)
+        user = authenticate(username=username, password=password)
 
         if user is not None:
             auth_login(request, user)
-            messages.success(request, "Siz muvaffaqiyatli ro'yxatdan o'tdingiz va tizimga kirdingiz!")
+            messages.success(request, "Siz muvaffaqiyatli ro'yxatdan o'tdingiz")
+            print("Siz muvaffaqiyatli ro'yxatdan o'tdingiz")
             return redirect('home')
 
         messages.error(request, "Autentifikatsiyada xatolik yuz berdi!")
