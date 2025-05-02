@@ -1,0 +1,18 @@
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md">
+        <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Profilni tahrirlash</h2>
+
+        <form method="POST" enctype="multipart/form-data" class="space-y-4">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-floppy-disk"></i> O‘zgarishlarni saqlash
+            </button>
+
+            <a href="{% url 'home' %}" class="block text-center text-sm text-gray-500 hover:text-gray-800 mt-2">
+                Bekor qilish
+            </a>
+        </form>
+    </div>
+</div>
