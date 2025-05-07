@@ -25,17 +25,12 @@
                     class="bg-[#E7E2DC] w-[68px] h-[68px] rounded-full top-[-28px] left-[20px] absolute object-cover"
                     src="{{ profile.img.url }}" alt="">
 
-                    <a href="{%  url 'edit_profile' profile.id %}">
+                    <a href="{%  url 'img/edit' profiles.id %}">
                         <button
                             class="w-[24px] h-[24px] bg-[#0A66C2] rounded-full absolute top-[20px] right-[132px] text-white flex items-center justify-center">
                             <i class="fa-solid fa-plus text-[15px]"></i>
                         </button>
                     </a>
-                    
-
-
-
-
                 <div class="mt-8 text-left">
                     <h2 class="text-[20px] font-semibold pt-4">{{ profile.fullname }} 10ta tanga</h2>
                     <p class="text-[12px] text-gray-500">{{ profile.location }}</p>

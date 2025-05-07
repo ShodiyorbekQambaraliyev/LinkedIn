@@ -71,15 +71,18 @@ def edit_profile(request, pk):
     return render(request, 'edit_profile.html', {'form': form})
 
 
-def update_profile_image(request):
-    if request.method == 'POST':
-        form = ProfileImageForm(request.POST, request.FILES, instance=request.user.profil)
+def img_edit(request, pk):
+    profiles = get_object_or_404(Profil, pk=pk)
+    if request.method == "POST":
+        form = ProfileImageForm(request.POST, request.FILES,  instance=profiles)
         if form.is_valid():
             form.save()
-            return redirect('profile')
+            return redirect('img_edit')
     else:
-        form = ProfileImageForm(instance=request.user.profile)
-    return render(request, 'home.html', {'form': form})
+        form = ProfileImageForm(instance=profiles)
+    return render(request, 'img_edit.html', {'form': form})
+
+
 
 def network(request):
     return render(request, 'network.html')
