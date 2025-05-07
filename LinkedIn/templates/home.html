@@ -25,7 +25,7 @@
                     class="bg-[#E7E2DC] w-[68px] h-[68px] rounded-full top-[-28px] left-[20px] absolute object-cover"
                     src="{{ profile.img.url }}" alt="">
 
-                    <a href="{%  url 'img/edit' profiles.id %}">
+                    <a href="{%  url 'img/edit' %}">
                         <button
                             class="w-[24px] h-[24px] bg-[#0A66C2] rounded-full absolute top-[20px] right-[132px] text-white flex items-center justify-center">
                             <i class="fa-solid fa-plus text-[15px]"></i>
@@ -102,7 +102,7 @@
         <div class="w-[555px] bg-white p-4 rounded-lg mb-[8px]">
             <div class="w-full flex gap-4">
                 {% for profile in profile %}
-                <img class="flex items-center justify-center w-[48px] h-[48px] rounded-full border border-2z  border-white"
+                <img class="flex items-center justify-center w-[48px] h-[48px] rounded-full border border-2z  border-white object-cover"
                     src="{{ profile.img.url }}" alt="">
                 {% endfor %}
                 <input type="text" placeholder="Start a post" class="w-full px-6 border border-[#b2b2b2] rounded-full">
@@ -207,7 +207,7 @@
                 {% for profile in profile %}
                 <div class="flex items-center justify-between  px-[14px] mt-2">
                     <div class="flex items-center space-x-3">
-                        <img src="{{ profile.img.url }}" alt="VS Code" class="w-12 h-12 rounded-full">
+                        <img src="{{ profile.img.url }}" alt="VS Code" class="w-12 h-12 rounded-full object-cover">
                         <div>
                             <h1 class="text-xl font-bold">{{ profile.fullname }}</h1>
                             <p class="text-gray-600 text-sm">36,452 followers • 1w</p>
